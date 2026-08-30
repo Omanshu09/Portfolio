@@ -1,0 +1,3263 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0"
+
+>
+
+<title>
+    Omanshu Bhatt — AI/ML & Full-Stack Developer
+</title>
+
+<style>
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background: #ffffff;
+    color: #111111;
+}
+
+
+/* =========================================================
+   MAIN PAGE
+========================================================= */
+
+#app {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    transition:
+        background 0.5s ease,
+        color 0.5s ease;
+}
+
+
+/* =========================================================
+   3D ROOM
+========================================================= */
+
+#canvas-container {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 1;
+}
+
+#canvas-container canvas {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+}
+
+
+/* =========================================================
+   TOP NAVIGATION
+========================================================= */
+
+#top-bar {
+    position: absolute;
+
+    top: 18px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: min(900px, calc(100% - 40px));
+
+    min-height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    padding: 8px 10px;
+
+    background:
+        rgba(255, 255, 255, 0.88);
+
+    border:
+        1px solid rgba(0, 0, 0, 0.10);
+
+    border-radius: 18px;
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.08);
+
+    z-index: 20;
+
+    transition:
+        background 0.4s ease,
+        border-color 0.4s ease;
+}
+
+#top-bar button {
+    border: none;
+
+    background: transparent;
+
+    color: #222;
+
+    padding: 11px 22px;
+
+    border-radius: 12px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+#top-bar button:hover {
+    background:
+        rgba(0, 0, 0, 0.07);
+
+    transform:
+        translateY(-1px);
+}
+
+
+/* =========================================================
+   PLATFORM BAR
+========================================================= */
+
+#platform-wrap {
+    position: absolute;
+
+    top: 88px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    z-index: 25;
+}
+
+#platform-bar {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    padding: 6px 8px;
+
+    border-radius: 15px;
+
+    background:
+        rgba(255, 255, 255, 0.86);
+
+    border:
+        1px solid rgba(0, 0, 0, 0.08);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.08);
+
+    transition:
+        background 0.4s ease,
+        border-color 0.4s ease;
+}
+
+.platform-link,
+.platform-button {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+
+    border-radius: 10px;
+
+    background: transparent;
+
+    color: #222;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        color 0.2s ease;
+}
+
+.platform-link:hover,
+.platform-button:hover {
+    background:
+        rgba(0, 0, 0, 0.07);
+
+    transform:
+        translateY(-2px);
+}
+
+.platform-link svg,
+.platform-button svg {
+    width: 20px;
+    height: 20px;
+
+    fill: currentColor;
+}
+
+
+/* =========================================================
+   CONTACT POPOVER
+========================================================= */
+
+#contact-popover {
+    position: absolute;
+
+    top: calc(100% + 10px);
+    right: 0;
+
+    width: 270px;
+
+    padding: 14px;
+
+    background:
+        rgba(255, 255, 255, 0.96);
+
+    border:
+        1px solid rgba(0, 0, 0, 0.10);
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 16px 40px rgba(0, 0, 0, 0.14);
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform:
+        translateY(-6px);
+
+    transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease,
+        transform 0.2s ease;
+}
+
+#contact-popover.active {
+    opacity: 1;
+    visibility: visible;
+
+    transform:
+        translateY(0);
+}
+
+.contact-title {
+    margin-bottom: 10px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.12em;
+
+    color: #777;
+}
+
+.contact-item {
+    display: block;
+
+    padding: 10px 11px;
+
+    border-radius: 10px;
+
+    color: #222;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    transition:
+        background 0.2s ease;
+}
+
+.contact-item:hover {
+    background:
+        #f1f1f1;
+}
+
+.contact-item strong {
+    display: block;
+
+    margin-bottom: 3px;
+
+    font-size: 11px;
+
+    color: #888;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.05em;
+}
+
+
+/* =========================================================
+   3D AXIS CONTROLS
+========================================================= */
+
+/*
+    CHANGE ONLY THIS VALUE IF YOU WANT TO MOVE
+    THE CONTROLS UP OR DOWN.
+
+    70% = higher
+    74% = current
+    78% = lower
+    82% = much lower
+*/
+
+:root {
+    --axis-control-top: 83%;
+}
+
+
+/*
+    Minimal horizontal control dock.
+*/
+
+#axis-control-wrap {
+    position: absolute;
+
+    top: var(--axis-control-top);
+
+    right: 28px;
+
+    transform: translateY(-50%);
+
+    z-index: 15;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 5px;
+
+    border-radius: 13px;
+
+    background: transparent;
+
+    border: none;
+
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+
+    box-shadow: none;
+
+    transition:
+        background 0.4s ease,
+        border-color 0.4s ease;
+}
+
+
+/*
+    Cross-shaped arrangement.
+*/
+
+#axis-control {
+    display: grid;
+
+    grid-template-columns:
+        30px 30px 30px;
+
+    grid-template-rows:
+        30px 30px 30px;
+
+    gap: 3px;
+
+    align-items: center;
+    justify-items: center;
+}
+
+
+/*
+    Every directional button.
+*/
+
+.axis-button {
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid currentColor;
+
+    border-radius: 8px;
+
+    background: transparent;
+
+    color: #111111;
+
+    font-family:
+        Arial,
+        sans-serif;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    line-height: 1;
+
+    cursor: pointer;
+
+    user-select: none;
+
+    transition:
+        background 0.18s ease,
+        color 0.18s ease,
+        transform 0.18s ease,
+        opacity 0.18s ease;
+}
+
+.axis-button:hover {
+    background:
+        #111111;
+
+    color:
+        #ffffff;
+
+    transform:
+        scale(1.05);
+}
+
+.axis-button:active {
+    transform:
+        scale(0.94);
+}
+
+
+/*
+    Center reset button.
+*/
+
+.axis-reset {
+    width: 26px;
+    height: 26px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background:
+        #111111;
+
+    color:
+        #ffffff;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.axis-reset:hover {
+    transform:
+        scale(1.08);
+}
+
+.axis-reset:active {
+    transform:
+        scale(0.92);
+}
+
+
+/*
+    Grid positions
+*/
+
+.axis-x-positive {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+.axis-x-negative {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.axis-y-positive {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.axis-y-negative {
+    grid-column: 2;
+    grid-row: 3;
+}
+
+.axis-reset {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+
+/* =========================================================
+   DAY / NIGHT
+========================================================= */
+
+#theme-toggle {
+    position: absolute;
+
+    right: 24px;
+    bottom: 24px;
+
+    z-index: 30;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 7px 10px;
+
+    border-radius: 999px;
+
+    background:
+        rgba(255, 255, 255, 0.9);
+
+    border:
+        1px solid rgba(0, 0, 0, 0.12);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.10);
+}
+
+#theme-toggle button {
+    border: none;
+
+    width: 36px;
+    height: 36px;
+
+    border-radius: 50%;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+#theme-toggle button:hover {
+    background:
+        rgba(0, 0, 0, 0.08);
+
+    transform:
+        scale(1.05);
+}
+
+#theme-label {
+    font-size: 12px;
+    font-weight: 600;
+
+    padding-right: 4px;
+}
+
+
+/* =========================================================
+   MUSIC
+========================================================= */
+
+#music-toggle {
+    position: absolute;
+
+    left: 24px;
+    bottom: 24px;
+
+    z-index: 30;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 7px 10px;
+
+    border-radius: 999px;
+
+    background:
+        rgba(255, 255, 255, 0.9);
+
+    border:
+        1px solid rgba(0, 0, 0, 0.12);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.10);
+}
+
+#music-button {
+    border: none;
+
+    width: 36px;
+    height: 36px;
+
+    border-radius: 50%;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease;
+}
+
+#music-button:hover {
+    background:
+        rgba(0, 0, 0, 0.08);
+
+    transform:
+        scale(1.05);
+}
+
+#music-label {
+    font-size: 12px;
+    font-weight: 600;
+
+    padding-right: 4px;
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+#modal-layer {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 100;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 25px;
+
+    background:
+        rgba(0, 0, 0, 0.28);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+#modal-layer.active {
+    display: flex;
+}
+
+.modal {
+    position: relative;
+
+    width: min(850px, 94vw);
+
+    max-height: 86vh;
+
+    overflow-y: auto;
+
+    background:
+        rgba(255, 255, 255, 0.97);
+
+    color:
+        #111;
+
+    border-radius: 24px;
+
+    border:
+        1px solid rgba(0, 0, 0, 0.10);
+
+    box-shadow:
+        0 30px 90px rgba(0, 0, 0, 0.25);
+
+    padding: 34px;
+
+    animation:
+        modalIn 0.3s ease;
+}
+
+@keyframes modalIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(18px)
+            scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+.modal-close {
+    position: absolute;
+
+    top: 18px;
+    right: 18px;
+
+    width: 38px;
+    height: 38px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background:
+        #eeeeee;
+
+    cursor: pointer;
+
+    font-size: 20px;
+}
+
+.modal-kicker {
+    margin-bottom: 8px;
+
+    font-size: 12px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.14em;
+
+    color: #777;
+}
+
+.modal h2 {
+    margin: 0 0 20px;
+
+    font-size:
+        clamp(28px, 5vw, 46px);
+
+    line-height: 1.05;
+}
+
+.modal p {
+    color: #555;
+
+    line-height: 1.75;
+
+    font-size: 15px;
+}
+
+
+/* =========================================================
+   ABOUT
+========================================================= */
+
+.about-layout {
+    display: grid;
+
+    grid-template-columns:
+        180px 1fr;
+
+    gap: 30px;
+
+    align-items: start;
+}
+
+.about-photo {
+    width: 180px;
+    height: 220px;
+
+    object-fit: cover;
+
+    border-radius: 18px;
+
+    background:
+        #eeeeee;
+
+    border:
+        1px solid rgba(0, 0, 0, 0.08);
+}
+
+.about-name {
+    margin-bottom: 5px;
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.about-role {
+    margin-bottom: 18px;
+
+    color: #777;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   SKILLS
+========================================================= */
+
+.skill-group {
+    margin-bottom: 24px;
+}
+
+.skill-group-title {
+    margin-bottom: 10px;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.08em;
+
+    color: #777;
+}
+
+.skill-list {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+}
+
+.skill {
+    padding: 8px 12px;
+
+    background:
+        #f1f1f1;
+
+    border-radius: 999px;
+
+    font-size: 13px;
+
+    color: #333;
+}
+
+
+/* =========================================================
+   PROJECTS
+========================================================= */
+
+.project-list {
+    display: grid;
+
+    gap: 14px;
+}
+
+.project-card {
+    padding: 22px;
+
+    border-radius: 18px;
+
+    background:
+        #f6f6f6;
+
+    border:
+        1px solid rgba(0, 0, 0, 0.07);
+}
+
+.project-number {
+    margin-bottom: 8px;
+
+    font-size: 11px;
+
+    color: #888;
+
+    letter-spacing: 0.1em;
+}
+
+.project-title {
+    margin-bottom: 10px;
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.project-description {
+    margin-bottom: 14px;
+
+    font-size: 14px;
+
+    line-height: 1.65;
+
+    color: #666;
+}
+
+.tech-list {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 6px;
+
+    margin-bottom: 16px;
+}
+
+.tech {
+    padding: 5px 9px;
+
+    border-radius: 999px;
+
+    background:
+        #e8e8e8;
+
+    font-size: 11px;
+}
+
+.project-link,
+.project-status {
+    display: inline-block;
+
+    padding: 9px 14px;
+
+    border-radius: 10px;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.project-link {
+    background:
+        #111;
+
+    color:
+        white;
+
+    text-decoration: none;
+
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.project-link:hover {
+    transform:
+        translateY(-1px);
+
+    opacity:
+        0.88;
+}
+
+.project-status {
+    background:
+        #e8e8e8;
+
+    color:
+        #555;
+}
+
+
+/* =========================================================
+   CERTIFICATIONS
+========================================================= */
+
+.certificate-list {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 12px;
+}
+
+.certificate {
+    padding: 17px;
+
+    border-radius: 15px;
+
+    background:
+        #f6f6f6;
+
+    border:
+        1px solid rgba(0, 0, 0, 0.07);
+}
+
+.certificate strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    font-size: 14px;
+}
+
+.certificate span {
+    color:
+        #777;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   NIGHT MODE
+========================================================= */
+
+body.night,
+body.night #app {
+    background:
+        #000000;
+}
+
+body.night #top-bar,
+body.night #platform-bar {
+    background:
+        rgba(20, 20, 20, 0.88);
+
+    border-color:
+        rgba(255, 255, 255, 0.10);
+}
+
+body.night #top-bar button,
+body.night .platform-link,
+body.night .platform-button {
+    color:
+        #eeeeee;
+}
+
+body.night #top-bar button:hover,
+body.night .platform-link:hover,
+body.night .platform-button:hover {
+    background:
+        rgba(255, 255, 255, 0.08);
+}
+
+
+/* =========================================================
+   NIGHT MODE — 3D CONTROLS
+========================================================= */
+
+body.night #axis-control-wrap {
+    background: transparent;
+
+    border-color: transparent;
+
+    box-shadow: none;
+}
+
+
+/*
+    IMPORTANT:
+
+    Everything is WHITE in night mode.
+*/
+
+body.night .axis-button {
+    color:
+        #ffffff;
+}
+
+body.night .axis-button:hover {
+    background:
+        #ffffff;
+
+    color:
+        #000000;
+}
+
+body.night .axis-reset {
+    background:
+        #ffffff;
+
+    color:
+        #000000;
+}
+
+
+/* =========================================================
+   NIGHT MODE — OTHER UI
+========================================================= */
+
+body.night #theme-toggle,
+body.night #music-toggle {
+    background:
+        rgba(20, 20, 20, 0.90);
+
+    border-color:
+        rgba(255, 255, 255, 0.10);
+
+    color:
+        white;
+}
+
+body.night #theme-toggle button,
+body.night #music-button {
+    color:
+        white;
+}
+
+
+/* =========================================================
+   NIGHT MODE — MODALS
+========================================================= */
+
+body.night #modal-layer {
+    background:
+        rgba(0, 0, 0, 0.58);
+}
+
+body.night .modal {
+    background:
+        rgba(20, 20, 20, 0.97);
+
+    color:
+        #eeeeee;
+
+    border-color:
+        rgba(255, 255, 255, 0.10);
+
+    box-shadow:
+        0 30px 90px rgba(0, 0, 0, 0.60);
+}
+
+body.night .modal p {
+    color:
+        #b8b8b8;
+}
+
+body.night .modal-kicker {
+    color:
+        #888888;
+}
+
+body.night .modal-close {
+    background:
+        #2b2b2b;
+
+    color:
+        #eeeeee;
+}
+
+body.night .modal-close:hover {
+    background:
+        #3a3a3a;
+}
+
+body.night .about-role {
+    color:
+        #999999;
+}
+
+body.night .about-stat {
+    background:
+        #292929;
+}
+
+body.night .about-stat span {
+    color:
+        #999999;
+}
+
+body.night .skill {
+    background:
+        #2b2b2b;
+
+    color:
+        #eeeeee;
+}
+
+body.night .skill-group-title {
+    color:
+        #999999;
+}
+
+body.night .project-card {
+    background:
+        #292929;
+
+    border-color:
+        rgba(255, 255, 255, 0.08);
+}
+
+body.night .project-number {
+    color:
+        #999999;
+}
+
+body.night .project-description {
+    color:
+        #b8b8b8;
+}
+
+body.night .tech {
+    background:
+        #383838;
+
+    color:
+        #eeeeee;
+}
+
+body.night .certificate {
+    background:
+        #292929;
+
+    border-color:
+        rgba(255, 255, 255, 0.08);
+}
+
+body.night .certificate span {
+    color:
+        #999999;
+}
+
+body.night .experience-item {
+    border-bottom-color:
+        #333333;
+}
+
+body.night .experience-role {
+    color:
+        #999999;
+}
+
+body.night .experience-description {
+    color:
+        #b8b8b8;
+}
+
+body.night .social-link {
+    background:
+        #292929;
+
+    color:
+        #eeeeee;
+
+    border-color:
+        rgba(255, 255, 255, 0.08);
+}
+
+body.night .social-link:hover {
+    background:
+        #333333;
+}
+
+body.night .social-url {
+    color:
+        #999999;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    #top-bar {
+        top: 10px;
+
+        width:
+            calc(100% - 20px);
+
+        min-height: 48px;
+
+        gap: 2px;
+
+        padding: 5px;
+    }
+
+    #top-bar button {
+        flex: 1;
+
+        padding:
+            9px 5px;
+
+        font-size: 11px;
+
+        white-space: nowrap;
+    }
+
+
+    #platform-wrap {
+        top: 68px;
+    }
+
+    #platform-bar {
+        gap: 3px;
+
+        padding:
+            5px 6px;
+    }
+
+    .platform-link,
+    .platform-button {
+        width: 34px;
+        height: 34px;
+    }
+
+    .platform-link svg,
+    .platform-button svg {
+        width: 18px;
+        height: 18px;
+    }
+
+
+    #contact-popover {
+        right: 50%;
+
+        width:
+            min(270px, 84vw);
+
+        transform:
+            translate(50%, -6px);
+    }
+
+    #contact-popover.active {
+        transform:
+            translate(50%, 0);
+    }
+
+
+    /*
+        Smaller mobile controls.
+    */
+
+    #axis-control-wrap {
+        right: 12px;
+
+        padding: 4px;
+    }
+
+    #axis-control {
+        grid-template-columns:
+            27px 27px 27px;
+
+        grid-template-rows:
+            27px 27px 27px;
+
+        gap: 2px;
+    }
+
+    .axis-button {
+        width: 27px;
+        height: 27px;
+
+        border-radius: 7px;
+
+        font-size: 10px;
+    }
+
+    .axis-reset {
+        width: 24px;
+        height: 24px;
+
+        font-size: 12px;
+    }
+
+
+    #theme-toggle {
+        right: 12px;
+        bottom: 12px;
+    }
+
+    #music-toggle {
+        left: 12px;
+        bottom: 12px;
+    }
+
+    #theme-label,
+    #music-label {
+        display: none;
+    }
+
+
+    #modal-layer {
+        padding:
+            12px;
+    }
+
+    .modal {
+        width: 100%;
+
+        max-height: 90vh;
+
+        padding:
+            25px 20px;
+
+        border-radius:
+            20px;
+    }
+
+
+    .about-layout {
+        grid-template-columns:
+            1fr;
+
+        gap:
+            18px;
+    }
+
+    .about-photo {
+        width: 120px;
+        height: 145px;
+    }
+
+
+    .certificate-list {
+        grid-template-columns:
+            1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="app">
+
+<!-- =====================================================
+     3D ROOM
+====================================================== -->
+
+<div id="canvas-container"></div>
+
+
+<!-- =====================================================
+     TOP BAR
+====================================================== -->
+
+<nav id="top-bar">
+
+    <button onclick="openModal('about')">
+        About
+    </button>
+
+    <button onclick="openModal('skills')">
+        Skills
+    </button>
+
+    <button onclick="openModal('projects')">
+        Projects
+    </button>
+
+    <button onclick="openModal('certifications')">
+        Certifications
+    </button>
+
+</nav>
+
+
+<!-- =====================================================
+     PLATFORM BAR
+====================================================== -->
+
+<div id="platform-wrap">
+
+    <div id="platform-bar">
+
+
+        <!-- LINKEDIN -->
+
+        <a
+            class="platform-link"
+            href="https://www.linkedin.com/in/omanshubhatt/"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="LinkedIn"
+            aria-label="LinkedIn">
+
+            <svg viewBox="0 0 24 24">
+
+                <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V8.99h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.61 0 4.27 2.38 4.27 5.48v6.27zM5.32 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM3.54 20.45H7.1V8.99H3.54v11.46z"/>
+
+            </svg>
+
+        </a>
+
+
+        <!-- GITHUB -->
+
+        <a
+            class="platform-link"
+            href="https://github.com/Omanshu09"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="GitHub"
+            aria-label="GitHub">
+
+            <svg viewBox="0 0 24 24">
+
+                <path d="M12 .5A11.5 11.5 0 0 0 8.36 22.9c.58.11.79-.25.79-.56v-2.16c-3.22.7-3.9-1.37-3.9-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.06-.73.08-.72.08-.72 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.72 1.27 3.38.97.1-.75.4-1.27.73-1.56-2.57-.29-5.28-1.28-5.28-5.7 0-1.26.45-2.28 1.2-3.08-.12-.29-.52-1.46.11-3.04 0 0 .98-.31 3.16 1.18a10.9 10.9 0 0 1 5.76 0c2.18-1.49 3.16-1.18 3.16-1.18.63 1.58.23 2.75.11 3.04.75.8 1.2 1.82 1.2 3.08 0 4.43-2.71 5.4-5.29 5.69.41.36.78 1.08.78 2.18v3.23c0 .31.21.68.8.56A11.5 11.5 0 0 0 12 .5z"/>
+
+            </svg>
+
+        </a>
+
+
+        <!-- CODEWARS -->
+
+        <a
+            class="platform-link"
+            href="https://www.codewars.com/users/Omanshu"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Codewars"
+            aria-label="Codewars">
+
+            <svg viewBox="0 0 24 24">
+
+                <path d="M12 2.5 14.6 7l5.1.9-3.5 3.8.7 5.2L12 14.7 7.1 17l.7-5.2-3.5-3.8L9.4 7 12 2.5zm0 4.1-1.2 2.1-2.4.4 1.7 1.8-.3 2.4 2.2-1 2.2 1-.3-2.4 1.7-1.8-2.4-.4L12 6.6z"/>
+
+            </svg>
+
+        </a>
+
+
+        <!-- CONTACT -->
+
+        <button
+            class="platform-button"
+            onclick="toggleContact(event)"
+            title="Contact Me"
+            aria-label="Contact Me">
+
+            <svg viewBox="0 0 24 24">
+
+                <path d="M20 15.5a3.8 3.8 0 0 1-3.8 3.8c-6.3 0-11.5-5.2-11.5-11.5A3.8 3.8 0 0 1 8.5 4h1.2c.5 0 .9.3 1 .8l.8 3a1 1 0 0 1-.3 1l-1.4 1.4a10 10 0 0 0 4 4l1.4-1.4a1 1 0 0 1 1-.3l3 .8c.5.1.8.5.8 1v1.2z"/>
+
+            </svg>
+
+        </button>
+
+
+        <!-- RESUME -->
+
+        <a
+            class="platform-link"
+            href="Omanshu_Bhatt_Resume.pdf"
+            download="Omanshu_Bhatt_Resume.pdf"
+            title="Download Resume"
+            aria-label="Download Resume">
+
+            <svg viewBox="0 0 24 24">
+
+                <path d="M11 3h2v10.2l3.6-3.6 1.4 1.4-6 6-6-6 1.4-1.4 3.6 3.6V3zM5 19h14v2H5v-2z"/>
+
+            </svg>
+
+        </a>
+
+
+        <!-- CONTACT POPOVER -->
+
+        <div id="contact-popover">
+
+            <div class="contact-title">
+                Contact Me
+            </div>
+
+            <a
+                class="contact-item"
+                href="mailto:omanshu25@gmail.com">
+
+                <strong>
+                    Email
+                </strong>
+
+                omanshu25@gmail.com
+
+            </a>
+
+            <a
+                class="contact-item"
+                href="tel:+918755118493">
+
+                <strong>
+                    Phone
+                </strong>
+
+                +91 8755 11 84 93
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     RESTRICTED 3D AXIS CONTROLS
+====================================================== -->
+
+<div id="axis-control-wrap">
+
+    <div id="axis-control">
+
+        <button
+            class="axis-button axis-y-positive"
+            onclick="rotateModel('yPositive')"
+            aria-label="Positive Y"
+            title="Positive Y">
+
+            ↑
+
+        </button>
+
+
+        <button
+            class="axis-button axis-x-negative"
+            onclick="rotateModel('xNegative')"
+            aria-label="Negative X"
+            title="Negative X">
+
+            ←
+
+        </button>
+
+
+        <button
+            class="axis-reset"
+            onclick="resetModelRotation()"
+            aria-label="Reset 3D view"
+            title="Reset 3D view">
+
+            ·
+
+        </button>
+
+
+        <button
+            class="axis-button axis-x-positive"
+            onclick="rotateModel('xPositive')"
+            aria-label="Positive X"
+            title="Positive X">
+
+            →
+
+        </button>
+
+
+        <button
+            class="axis-button axis-y-negative"
+            onclick="rotateModel('yNegative')"
+            aria-label="Negative Y"
+            title="Negative Y">
+
+            ↓
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     MUSIC
+====================================================== -->
+
+<div id="music-toggle">
+
+    <button
+        id="music-button"
+        onclick="toggleMusic()"
+        title="Play music">
+
+        ▶
+
+    </button>
+
+    <span id="music-label">
+        Music
+    </span>
+
+</div>
+
+
+<audio
+    id="background-music"
+    src="music.mp4"
+    preload="auto">
+</audio>
+
+
+<!-- =====================================================
+     DAY / NIGHT
+====================================================== -->
+
+<div id="theme-toggle">
+
+    <button
+        onclick="setTheme('day')"
+        title="Day mode">
+
+        ☀
+
+    </button>
+
+    <span id="theme-label">
+        Day
+    </span>
+
+    <button
+        onclick="setTheme('night')"
+        title="Night mode">
+
+        ☾
+
+    </button>
+
+</div>
+
+</div>
+
+<!-- =========================================================
+     MODAL SYSTEM
+========================================================= -->
+
+<div id="modal-layer">
+
+<div class="modal">
+
+<button
+ class="modal-close"
+ onclick="closeModal()">
+×
+</button>
+
+<!-- =========================================================
+     ABOUT
+========================================================= -->
+
+<div
+    id="modal-about"
+    class="modal-content">
+
+<div class="modal-kicker">
+    About Me
+</div>
+
+<h2>
+    Building intelligent systems
+    that actually work.
+</h2>
+
+
+<div class="about-layout">
+
+    <img
+        src="About Me photo.jpg"
+        alt="Omanshu Bhatt"
+        class="about-photo"
+    >
+
+
+    <div>
+
+        <div class="about-name">
+            Omanshu Bhatt
+        </div>
+
+        <div class="about-role">
+            AI/ML & Full-Stack Developer
+        </div>
+
+
+        <p>
+            I’m an AI/ML and Full-Stack Developer focused on
+            building production-grade AI and distributed systems.
+            I work across the complete engineering stack, from
+            retrieval and reasoning pipelines to low-latency APIs
+            and real-time collaborative applications.
+        </p>
+
+        <p>
+            My work includes systems for web research, evidence
+            retrieval, real-time collaboration, code intelligence
+            and machine learning, with an emphasis on reliability,
+            practical architecture and deployable software.
+        </p>
+
+        <p>
+            I enjoy turning technically complex ideas into products
+            that are understandable, useful and built to work
+            outside of a demo environment.
+        </p>
+
+    </div>
+
+</div>
+
+</div>
+
+<!-- =========================================================
+     SKILLS
+========================================================= -->
+
+<div
+    id="modal-skills"
+    class="modal-content"
+    style="display:none;">
+
+<div class="modal-kicker">
+    Technical Skills
+</div>
+
+<h2>
+    What I work with
+</h2>
+
+
+<div class="skill-group">
+
+    <div class="skill-group-title">
+        Languages
+    </div>
+
+    <div class="skill-list">
+
+        <span class="skill">Python</span>
+        <span class="skill">Go</span>
+        <span class="skill">Java</span>
+        <span class="skill">JavaScript</span>
+        <span class="skill">C</span>
+
+    </div>
+
+</div>
+
+
+<div class="skill-group">
+
+    <div class="skill-group-title">
+        Web & Frameworks
+    </div>
+
+    <div class="skill-list">
+
+        <span class="skill">React.js</span>
+        <span class="skill">FastAPI</span>
+        <span class="skill">Node.js</span>
+        <span class="skill">Django</span>
+        <span class="skill">HTML</span>
+        <span class="skill">CSS</span>
+
+    </div>
+
+</div>
+
+
+<div class="skill-group">
+
+    <div class="skill-group-title">
+        Data & Databases
+    </div>
+
+    <div class="skill-list">
+
+        <span class="skill">Elasticsearch</span>
+        <span class="skill">PostgreSQL</span>
+        <span class="skill">Redis</span>
+        <span class="skill">Neon</span>
+
+    </div>
+
+</div>
+
+
+<div class="skill-group">
+
+    <div class="skill-group-title">
+        AI / ML
+    </div>
+
+    <div class="skill-list">
+
+        <span class="skill">PyTorch</span>
+        <span class="skill">LangChain</span>
+        <span class="skill">Generative AI</span>
+        <span class="skill">RAG</span>
+        <span class="skill">Vector Databases</span>
+
+    </div>
+
+</div>
+
+
+<div class="skill-group">
+
+    <div class="skill-group-title">
+        Cloud, DevOps & Systems
+    </div>
+
+    <div class="skill-list">
+
+        <span class="skill">AWS</span>
+        <span class="skill">Docker</span>
+        <span class="skill">Kubernetes</span>
+        <span class="skill">Kafka</span>
+        <span class="skill">CI/CD</span>
+        <span class="skill">Jenkins</span>
+        <span class="skill">GitHub Actions</span>
+
+    </div>
+
+</div>
+
+
+<div class="skill-group">
+
+    <div class="skill-group-title">
+        Distributed & Realtime Systems
+    </div>
+
+    <div class="skill-list">
+
+        <span class="skill">Yjs</span>
+        <span class="skill">CRDTs</span>
+        <span class="skill">Ably</span>
+        <span class="skill">IndexedDB</span>
+        <span class="skill">REST APIs</span>
+        <span class="skill">
+            Distributed State Synchronization
+        </span>
+
+    </div>
+
+</div>
+
+
+<div class="skill-group">
+
+    <div class="skill-group-title">
+        Core CS
+    </div>
+
+    <div class="skill-list">
+
+        <span class="skill">
+            Data Structures & Algorithms
+        </span>
+
+        <span class="skill">
+            Operating Systems
+        </span>
+
+        <span class="skill">
+            Database Management Systems
+        </span>
+
+        <span class="skill">
+            Object-Oriented Programming
+        </span>
+
+    </div>
+
+</div>
+
+</div>
+
+<!-- =========================================================
+     PROJECTS
+========================================================= -->
+
+<div
+    id="modal-projects"
+    class="modal-content"
+    style="display:none;">
+
+<div class="modal-kicker">
+    Projects & Engineering Work
+</div>
+
+<h2>
+    Systems I've built
+</h2>
+
+
+<div class="project-list">
+
+
+    <div class="project-card">
+
+        <div class="project-number">
+            PROJECT 01
+        </div>
+
+        <div class="project-title">
+            ATLAS — Web Research & Evidence Engine
+        </div>
+
+        <div class="project-description">
+
+            A research-driven web evidence engine that performs
+            query processing, multi-source web retrieval, content
+            extraction, relevance filtering and ranking before
+            synthesizing structured, source-backed responses.
+
+        </div>
+
+        <div class="tech-list">
+
+            <span class="tech">Web Search</span>
+            <span class="tech">Information Retrieval</span>
+            <span class="tech">Evidence Extraction</span>
+            <span class="tech">RAG</span>
+            <span class="tech">LLM</span>
+            <span class="tech">FastAPI</span>
+            <span class="tech">React</span>
+            <span class="tech">Docker</span>
+
+        </div>
+
+        <a
+            class="project-link"
+            href="https://search-engine-frontend-xi.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            View Live →
+
+        </a>
+
+    </div>
+
+
+    <div class="project-card">
+
+        <div class="project-number">
+            PROJECT 02
+        </div>
+
+        <div class="project-title">
+            NEXUS — Real-Time Collaborative Engineering Workspace
+        </div>
+
+        <div class="project-description">
+
+            A real-time collaborative engineering workspace
+            enabling multiple users to edit a shared CRDT-based
+            notepad with near-instant synchronization, offline
+            persistence, automatic recovery and isolated Python
+            execution.
+
+        </div>
+
+        <div class="tech-list">
+
+            <span class="tech">React</span>
+            <span class="tech">TypeScript</span>
+            <span class="tech">Vite</span>
+            <span class="tech">Node.js</span>
+            <span class="tech">Yjs</span>
+            <span class="tech">CRDT</span>
+            <span class="tech">Ably</span>
+            <span class="tech">IndexedDB</span>
+            <span class="tech">PostgreSQL</span>
+            <span class="tech">E2B</span>
+
+        </div>
+
+        <a
+            class="project-link"
+            href="https://nexus-deployment-frontend.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            View Live →
+
+        </a>
+
+    </div>
+
+
+    <div class="project-card">
+
+        <div class="project-number">
+            PROJECT 03
+        </div>
+
+        <div class="project-title">
+            AI Codebase Intelligence Platform
+        </div>
+
+        <div class="project-description">
+
+            A semantic search platform for codebases using RAG and
+            vector embeddings to help developers navigate unfamiliar
+            repositories through natural-language questions and
+            context-aware code retrieval.
+
+        </div>
+
+        <div class="tech-list">
+
+            <span class="tech">Python</span>
+            <span class="tech">FastAPI</span>
+            <span class="tech">React</span>
+            <span class="tech">RAG</span>
+            <span class="tech">Vector DB</span>
+            <span class="tech">Docker</span>
+
+        </div>
+
+        <a
+            class="project-link"
+            href="https://github.com/Omanshu09/AI-codebase-intlligence"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            View on GitHub →
+
+        </a>
+
+    </div>
+
+
+    <div class="project-card">
+
+        <div class="project-number">
+            PROJECT 04
+        </div>
+
+        <div class="project-title">
+            Deepfake Image Integrity System
+        </div>
+
+        <div class="project-description">
+
+            A cross-platform AI-generated image detection system
+            using an ensemble of Vision Transformer and
+            EfficientNet-B0 models, packaged with a unified
+            inference pipeline for practical image verification.
+
+        </div>
+
+        <div class="tech-list">
+
+            <span class="tech">Python</span>
+            <span class="tech">PyTorch</span>
+            <span class="tech">ViT</span>
+            <span class="tech">EfficientNet-B0</span>
+            <span class="tech">FastAPI</span>
+            <span class="tech">Docker</span>
+
+        </div>
+
+        <a
+            class="project-link"
+            href="https://github.com/Omanshu09/Deepfake-image-integrity-system"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            View on GitHub →
+
+        </a>
+
+    </div>
+
+
+    <div class="project-card">
+
+        <div class="project-number">
+            PROJECT 05
+        </div>
+
+        <div class="project-title">
+            Omanshu Bhatt — Interactive Personal Website
+        </div>
+
+        <div class="project-description">
+
+            An interactive personal website combining a blog,
+            Ask Me AI, an infinite running game, a globe,
+            feedback tools, animated ring and spiral image
+            layouts, portfolio access and a dynamic
+            particle-driven visual background.
+
+        </div>
+
+        <div class="tech-list">
+
+            <span class="tech">HTML</span>
+            <span class="tech">CSS</span>
+            <span class="tech">JavaScript</span>
+
+        </div>
+
+        <a
+            class="project-link"
+            href="https://omanshu09.github.io/omanshu-repository/index.html"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            View Live →
+
+        </a>
+
+    </div>
+
+
+    <div class="project-card">
+
+        <div class="project-number">
+            PROJECT 06
+        </div>
+
+        <div class="project-title">
+            3D Developer Portfolio
+        </div>
+
+        <div class="project-description">
+
+            A browser-based developer portfolio built around an
+            immersive 3D room environment, combining a WebGL-rendered
+            scene with responsive portfolio interfaces, project
+            showcases, profile links, theme controls and ambient
+            audio while keeping the experience lightweight and
+            directly accessible from the web.
+
+        </div>
+
+        <div class="tech-list">
+
+            <span class="tech">HTML</span>
+            <span class="tech">CSS</span>
+            <span class="tech">JavaScript</span>
+            <span class="tech">Three.js</span>
+            <span class="tech">WebGL</span>
+            <span class="tech">GLB</span>
+
+        </div>
+
+        <span class="project-status">
+            Current Build
+        </span>
+
+    </div>
+
+</div>
+
+</div>
+
+<!-- =========================================================
+     CERTIFICATIONS
+========================================================= -->
+
+<div
+    id="modal-certifications"
+    class="modal-content"
+    style="display:none;">
+
+<div class="modal-kicker">
+    Certifications
+</div>
+
+<h2>
+    Learning beyond the classroom.
+</h2>
+
+
+<div class="certificate-list">
+
+
+    <div class="certificate">
+
+        <strong>
+            Agentic AI Certified Foundations Associate
+        </strong>
+
+        <span>
+            Oracle
+        </span>
+
+    </div>
+
+
+    <div class="certificate">
+
+        <strong>
+            AI, Justice and Rule of Law
+        </strong>
+
+        <span>
+            University of Oxford
+        </span>
+
+    </div>
+
+
+    <div class="certificate">
+
+        <strong>
+            Career Edge — Young Professional
+        </strong>
+
+        <span>
+            TATA / TCS iON
+        </span>
+
+    </div>
+
+
+    <div class="certificate">
+
+        <strong>
+            Cybersecurity Analyst Job Simulation
+        </strong>
+
+        <span>
+            TATA
+        </span>
+
+    </div>
+
+
+    <div class="certificate">
+
+        <strong>
+            Cyber Job Simulation
+        </strong>
+
+        <span>
+            Deloitte
+        </span>
+
+    </div>
+
+
+    <div class="certificate">
+
+        <strong>
+            Hyperspectral Data for Land and Coastal Systems
+        </strong>
+
+        <span>
+            NASA
+        </span>
+
+    </div>
+
+
+    <div class="certificate">
+
+        <strong>
+            Web Development Bootcamp
+        </strong>
+
+        <span>
+            Udemy
+        </span>
+
+    </div>
+
+
+    <div class="certificate">
+
+        <strong>
+            Introduction to Data Science
+        </strong>
+
+        <span>
+            Cisco
+        </span>
+
+    </div>
+
+
+    <div class="certificate">
+
+        <strong>
+            Software Engineering Job Simulation
+        </strong>
+
+        <span>
+            Commonwealth Bank
+        </span>
+
+    </div>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+<!-- =========================================================
+     THREE.JS
+========================================================= -->
+
+<script type="importmap">
+
+{
+    "imports": {
+
+        "three":
+            "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+
+        "three/addons/":
+            "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+
+    }
+}
+
+</script>
+
+<script type="module">
+
+import * as THREE from 'three';
+
+import {
+    GLTFLoader
+} from
+'three/addons/loaders/GLTFLoader.js';
+
+import {
+    OrbitControls
+} from
+'three/addons/controls/OrbitControls.js';
+
+
+// =============================================================
+// SCENE
+// =============================================================
+
+const scene =
+    new THREE.Scene();
+
+
+// =============================================================
+// CAMERA
+// =============================================================
+
+const camera =
+    new THREE.PerspectiveCamera(
+        45,
+        window.innerWidth /
+        window.innerHeight,
+        0.1,
+        1000
+    );
+
+
+// EXACT WORKING CAMERA
+
+camera.position.set(
+    -5.6057,
+    0.8824,
+    6.0467
+);
+
+camera.lookAt(
+    0,
+    0,
+    0
+);
+
+
+// =============================================================
+// RENDERER
+// =============================================================
+
+const renderer =
+    new THREE.WebGLRenderer({
+        antialias: true,
+        alpha: true
+    });
+
+renderer.setSize(
+    window.innerWidth,
+    window.innerHeight
+);
+
+renderer.setPixelRatio(
+    Math.min(
+        window.devicePixelRatio,
+        2
+    )
+);
+
+renderer.outputColorSpace =
+    THREE.SRGBColorSpace;
+
+renderer.setClearColor(
+    0x000000,
+    0
+);
+
+
+document
+    .getElementById(
+        'canvas-container'
+    )
+    .appendChild(
+        renderer.domElement
+    );
+
+
+// =============================================================
+// LIGHTING
+// =============================================================
+
+const ambientLight =
+    new THREE.AmbientLight(
+        0xffffff,
+        2
+    );
+
+scene.add(
+    ambientLight
+);
+
+
+const directionalLight =
+    new THREE.DirectionalLight(
+        0xffffff,
+        3
+    );
+
+directionalLight.position.set(
+    5,
+    10,
+    5
+);
+
+scene.add(
+    directionalLight
+);
+
+
+// =============================================================
+// CONTROLS
+// =============================================================
+
+const controls =
+    new OrbitControls(
+        camera,
+        renderer.domElement
+    );
+
+
+// COMPLETELY LOCKED
+
+controls.enableRotate =
+    false;
+
+controls.enableZoom =
+    false;
+
+controls.enablePan =
+    false;
+
+controls.enableDamping =
+    false;
+
+
+// =============================================================
+// MODEL STATE
+// =============================================================
+
+let model = null;
+
+let targetRotationX = 0;
+let targetRotationY = 0;
+
+const ROTATION_STEP =
+    THREE.MathUtils.degToRad(12);
+
+
+// =============================================================
+// LOAD GLB
+// =============================================================
+
+const loader =
+    new GLTFLoader();
+
+
+loader.load(
+
+    './3D.glb',
+
+    function(gltf) {
+
+        model =
+            gltf.scene;
+
+        scene.add(
+            model
+        );
+
+
+        // KEEP EXISTING WORKING CENTERING
+
+        const box =
+            new THREE.Box3()
+            .setFromObject(
+                model
+            );
+
+
+        const center =
+            box.getCenter(
+                new THREE.Vector3()
+            );
+
+
+        model.position.x -=
+            center.x;
+
+        model.position.y -=
+            center.y;
+
+        model.position.z -=
+            center.z;
+
+
+        // ORIGINAL ROTATION
+
+        model.rotation.x = 0;
+        model.rotation.y = 0;
+        model.rotation.z = 0;
+
+
+        targetRotationX = 0;
+        targetRotationY = 0;
+
+
+        // KEEP EXACT CAMERA
+
+        camera.position.set(
+            -5.6057,
+            0.8824,
+            6.0467
+        );
+
+
+        camera.lookAt(
+            0,
+            0,
+            0
+        );
+
+
+        controls.target.set(
+            0,
+            0,
+            0
+        );
+
+
+        controls.update();
+
+    },
+
+    undefined,
+
+    function(error) {
+
+        console.error(
+            'GLB loading error:',
+            error
+        );
+
+    }
+
+);
+
+
+// =============================================================
+// RESPONSIVE CAMERA
+// =============================================================
+
+function updateCamera() {
+
+    const isMobile =
+        window.innerWidth <= 768;
+
+
+    if (isMobile) {
+
+        camera.fov =
+            58;
+
+    } else {
+
+        camera.fov =
+            45;
+
+    }
+
+
+    camera.aspect =
+        window.innerWidth /
+        window.innerHeight;
+
+
+    camera.updateProjectionMatrix();
+
+}
+
+
+updateCamera();
+
+
+window.addEventListener(
+    'resize',
+    updateCamera
+);
+
+
+// =============================================================
+// RESTRICTED MODEL MOVEMENT
+// =============================================================
+
+window.rotateModel =
+function(direction) {
+
+    if (!model) {
+        return;
+    }
+
+
+    if (
+        direction ===
+        'xPositive'
+    ) {
+
+        targetRotationY +=
+            ROTATION_STEP;
+
+    }
+
+
+    if (
+        direction ===
+        'xNegative'
+    ) {
+
+        targetRotationY -=
+            ROTATION_STEP;
+
+    }
+
+
+    if (
+        direction ===
+        'yPositive'
+    ) {
+
+        targetRotationX +=
+            ROTATION_STEP;
+
+    }
+
+
+    if (
+        direction ===
+        'yNegative'
+    ) {
+
+        targetRotationX -=
+            ROTATION_STEP;
+
+    }
+
+
+    /*
+        Keep the movement controlled.
+
+        This prevents the viewer from
+        endlessly spinning the model.
+    */
+
+    const MAX_ROTATION =
+        THREE.MathUtils.degToRad(60);
+
+
+    targetRotationX =
+        THREE.MathUtils.clamp(
+            targetRotationX,
+            -MAX_ROTATION,
+            MAX_ROTATION
+        );
+
+
+    targetRotationY =
+        THREE.MathUtils.clamp(
+            targetRotationY,
+            -MAX_ROTATION,
+            MAX_ROTATION
+        );
+
+};
+
+
+// =============================================================
+// RESET MODEL
+// =============================================================
+
+window.resetModelRotation =
+function() {
+
+    targetRotationX = 0;
+    targetRotationY = 0;
+
+};
+
+
+// =============================================================
+// ANIMATION
+// =============================================================
+
+function animate() {
+
+    requestAnimationFrame(
+        animate
+    );
+
+
+    /*
+        Keep the camera permanently fixed.
+    */
+
+    camera.position.set(
+        -5.6057,
+        0.8824,
+        6.0467
+    );
+
+
+    camera.lookAt(
+        0,
+        0,
+        0
+    );
+
+
+    /*
+        Smoothly move the model toward
+        the selected restricted position.
+    */
+
+    if (model) {
+
+        model.rotation.x =
+            THREE.MathUtils.lerp(
+                model.rotation.x,
+                targetRotationX,
+                0.08
+            );
+
+
+        model.rotation.y =
+            THREE.MathUtils.lerp(
+                model.rotation.y,
+                targetRotationY,
+                0.08
+            );
+
+    }
+
+
+    renderer.render(
+        scene,
+        camera
+    );
+
+}
+
+
+animate();
+
+</script>
+
+<!-- =========================================================
+     UI JAVASCRIPT
+========================================================= -->
+
+<script>
+
+
+// =========================================================
+// MODALS
+// =========================================================
+
+function openModal(section) {
+
+    const layer =
+        document.getElementById(
+            'modal-layer'
+        );
+
+
+    const contents =
+        document.querySelectorAll(
+            '.modal-content'
+        );
+
+
+    contents.forEach(
+        content => {
+
+            content.style.display =
+                'none';
+
+        }
+    );
+
+
+    const selected =
+        document.getElementById(
+            'modal-' + section
+        );
+
+
+    if (!selected) {
+        return;
+    }
+
+
+    selected.style.display =
+        'block';
+
+
+    layer.classList.add(
+        'active'
+    );
+
+
+    closeContact();
+
+}
+
+
+function closeModal() {
+
+    document
+        .getElementById(
+            'modal-layer'
+        )
+        .classList.remove(
+            'active'
+        );
+
+}
+
+
+document
+    .getElementById(
+        'modal-layer'
+    )
+    .addEventListener(
+        'click',
+        function(event) {
+
+            if (
+                event.target === this
+            ) {
+
+                closeModal();
+
+            }
+
+        }
+    );
+
+
+// =========================================================
+// CONTACT
+// =========================================================
+
+function toggleContact(event) {
+
+    event.stopPropagation();
+
+
+    const popover =
+        document.getElementById(
+            'contact-popover'
+        );
+
+
+    popover.classList.toggle(
+        'active'
+    );
+
+}
+
+
+function closeContact() {
+
+    document
+        .getElementById(
+            'contact-popover'
+        )
+        .classList.remove(
+            'active'
+        );
+
+}
+
+
+document
+    .getElementById(
+        'contact-popover'
+    )
+    .addEventListener(
+        'click',
+        function(event) {
+
+            event.stopPropagation();
+
+        }
+    );
+
+
+document.addEventListener(
+    'click',
+    function() {
+
+        closeContact();
+
+    }
+);
+
+
+// =========================================================
+// ESC
+// =========================================================
+
+document.addEventListener(
+    'keydown',
+    function(event) {
+
+        if (
+            event.key === 'Escape'
+        ) {
+
+            closeModal();
+
+            closeContact();
+
+        }
+
+    }
+);
+
+
+// =========================================================
+// DAY / NIGHT
+// =========================================================
+
+function setTheme(theme) {
+
+    if (
+        theme === 'night'
+    ) {
+
+        document.body.classList.add(
+            'night'
+        );
+
+
+        document
+            .getElementById(
+                'theme-label'
+            )
+            .textContent =
+            'Night';
+
+    } else {
+
+        document.body.classList.remove(
+            'night'
+        );
+
+
+        document
+            .getElementById(
+                'theme-label'
+            )
+            .textContent =
+            'Day';
+
+    }
+
+}
+
+
+setTheme(
+    'day'
+);
+
+
+// =========================================================
+// MUSIC
+// =========================================================
+
+const music =
+    document.getElementById(
+        'background-music'
+    );
+
+
+const musicButton =
+    document.getElementById(
+        'music-button'
+    );
+
+
+const musicLabel =
+    document.getElementById(
+        'music-label'
+    );
+
+
+music.volume =
+    0.18;
+
+
+function toggleMusic() {
+
+    if (
+        music.paused
+    ) {
+
+        music.play()
+            .then(() => {
+
+                musicButton.textContent =
+                    '❚❚';
+
+
+                musicLabel.textContent =
+                    'Playing';
+
+            })
+            .catch(error => {
+
+                console.log(
+                    error
+                );
+
+            });
+
+    } else {
+
+        music.pause();
+
+
+        musicButton.textContent =
+            '▶';
+
+
+        musicLabel.textContent =
+            'Music';
+
+    }
+
+}
+
+
+music.addEventListener(
+    'ended',
+    function() {
+
+        musicButton.textContent =
+            '▶';
+
+
+        musicLabel.textContent =
+            'Music';
+
+    }
+);
+
+</script>
+
+</body>
+</html>
