@@ -1737,9 +1737,12 @@ body.night .certificate span {
 </div>
 
 <audio
- id="background-music"
- src="music.mp4"
- preload="metadata"> </audio>
+    id="background-music"
+    src="music.mp4"
+    preload="auto"
+    autoplay
+    loop>
+</audio>
 
 <!-- =====================================================
      DAY / NIGHT
@@ -3249,6 +3252,46 @@ const musicLabel =
 
 music.volume =
     0.18;
+music.volume = 0.18;
+
+// Attempt to start music automatically
+window.addEventListener('load', () => {
+
+    music.play()
+        .then(() => {
+
+            musicButton.textContent = '❚❚';
+            musicLabel.textContent = 'Playing';
+
+        })
+        .catch(() => {
+
+            // Browser blocked autoplay.
+            // Start playback on the first user interaction.
+            const startMusic = () => {
+
+                music.play()
+                    .then(() => {
+
+                        musicButton.textContent = '❚❚';
+                        musicLabel.textContent = 'Playing';
+
+                    })
+                    .catch(() => {});
+
+                document.removeEventListener('click', startMusic);
+                document.removeEventListener('keydown', startMusic);
+                document.removeEventListener('touchstart', startMusic);
+
+            };
+
+            document.addEventListener('click', startMusic, { once: true });
+            document.addEventListener('keydown', startMusic, { once: true });
+            document.addEventListener('touchstart', startMusic, { once: true });
+
+        });
+
+});
 
 
 function toggleMusic() {
