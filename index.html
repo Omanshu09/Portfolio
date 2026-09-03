@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Omanshu Bhatt — AI/ML & Full-Stack Developer</title>
-    <link rel="preload" href="./3D.glb" as="fetch" crossorigin="anonymous">
+    <link rel="preload" href="./3D.glb" as="fetch" crossorigin="anonymous" />
 
     <style>
-        /* GLOBAL RESET */
+        /* ——— GLOBAL RESET ——— */
         * {
             box-sizing: border-box;
         }
@@ -24,7 +24,7 @@
             color: #111111;
         }
 
-        /* MAIN APP */
+        /* ——— APP ——— */
         #app {
             position: relative;
             width: 100%;
@@ -34,7 +34,7 @@
             transition: background 0.5s ease, color 0.5s ease;
         }
 
-        /* 3D CONTAINER */
+        /* ——— 3D CONTAINER ——— */
         #canvas-container {
             position: absolute;
             inset: 0;
@@ -48,7 +48,7 @@
             height: 100%;
         }
 
-        /* LOADING SCREEN */
+        /* ——— LOADING SCREEN ——— */
         #loading-screen {
             position: fixed;
             inset: 0;
@@ -98,7 +98,7 @@
             font-variant-numeric: tabular-nums;
         }
 
-        /* TOP NAVIGATION */
+        /* ——— TOP NAV ——— */
         #top-bar {
             position: absolute;
             top: 18px;
@@ -112,7 +112,7 @@
             gap: 8px;
             padding: 8px 10px;
             background: rgba(255, 255, 255, 0.88);
-            border: 1px solid rgba(0, 0, 0, 0.10);
+            border: 1px solid rgba(0, 0, 0, 0.25);
             border-radius: 18px;
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
@@ -136,7 +136,7 @@
             transform: translateY(-1px);
         }
 
-        /* PLATFORM BAR */
+        /* ——— PLATFORM BAR ——— */
         #platform-wrap {
             position: absolute;
             top: 88px;
@@ -153,7 +153,7 @@
             padding: 6px 8px;
             border-radius: 15px;
             background: rgba(255, 255, 255, 0.86);
-            border: 1px solid rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.25);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
@@ -186,7 +186,7 @@
             fill: currentColor;
         }
 
-        /* CONTACT POPOVER */
+        /* ——— CONTACT POPOVER ——— */
         #contact-popover {
             position: absolute;
             top: calc(100% + 10px);
@@ -238,7 +238,7 @@
             letter-spacing: 0.05em;
         }
 
-        /* 3D AXIS CONTROLS — LEFT / RIGHT / UP + RESET */
+        /* ——— 3D AXIS CONTROLS ——— */
         :root {
             --axis-control-top: 82%;
         }
@@ -328,7 +328,7 @@
             grid-row: 1;
         }
 
-        /* DAY / NIGHT TOGGLE */
+        /* ——— THEME TOGGLE ——— */
         #theme-toggle {
             position: absolute;
             right: 24px;
@@ -365,7 +365,7 @@
             padding-right: 4px;
         }
 
-        /* MUSIC TOGGLE */
+        /* ——— MUSIC TOGGLE ——— */
         #music-toggle {
             position: absolute;
             left: 24px;
@@ -402,7 +402,7 @@
             padding-right: 4px;
         }
 
-        /* MODAL */
+        /* ——— MODAL ——— */
         #modal-layer {
             position: fixed;
             inset: 0;
@@ -471,7 +471,7 @@
             font-size: 15px;
         }
 
-        /* ABOUT */
+        /* ——— ABOUT ——— */
         .about-layout {
             display: grid;
             grid-template-columns: 180px 1fr;
@@ -497,7 +497,7 @@
             font-size: 14px;
         }
 
-        /* SKILLS */
+        /* ——— SKILLS ——— */
         .skill-group {
             margin-bottom: 24px;
         }
@@ -522,7 +522,7 @@
             color: #333;
         }
 
-        /* PROJECTS */
+        /* ——— PROJECTS ——— */
         .project-list {
             display: grid;
             gap: 14px;
@@ -532,6 +532,7 @@
             border-radius: 18px;
             background: #f6f6f6;
             border: 1px solid rgba(0, 0, 0, 0.07);
+            transition: background 0.3s ease, border-color 0.3s ease;
         }
         .project-number {
             margin-bottom: 8px;
@@ -550,6 +551,22 @@
             line-height: 1.65;
             color: #666;
         }
+        .project-description .expand-trigger {
+            display: inline-block;
+            margin-left: 6px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #888;
+            cursor: pointer;
+            transition: color 0.2s ease, transform 0.2s ease;
+            background: none;
+            border: none;
+            padding: 0 4px;
+        }
+        .project-description .expand-trigger:hover {
+            color: #111;
+            transform: scale(1.1);
+        }
         .tech-list {
             display: flex;
             flex-wrap: wrap;
@@ -562,30 +579,170 @@
             background: #e8e8e8;
             font-size: 11px;
         }
+        .project-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        .project-actions .action-group {
+            display: flex;
+            gap: 10px;
+        }
         .project-link,
+        .project-code,
         .project-status {
             display: inline-block;
-            padding: 9px 14px;
+            padding: 9px 16px;
             border-radius: 10px;
             font-size: 12px;
             font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease, color 0.2s ease;
         }
         .project-link {
             background: #111;
             color: white;
-            text-decoration: none;
-            transition: transform 0.2s ease, opacity 0.2s ease;
         }
         .project-link:hover {
+            transform: translateY(-1px);
+            opacity: 0.88;
+        }
+        .project-code {
+            background: #111;
+            color: white;
+        }
+        .project-code:hover {
             transform: translateY(-1px);
             opacity: 0.88;
         }
         .project-status {
             background: #e8e8e8;
             color: #555;
+            cursor: default;
+        }
+        .project-note {
+            margin-top: 10px;
+            font-size: 12px;
+            color: #888;
+            font-style: italic;
+            border-top: 1px solid rgba(0, 0, 0, 0.06);
+            padding-top: 10px;
         }
 
-        /* CERTIFICATIONS */
+        /* ——— PROJECT EXPAND OVERLAY ——— */
+        #project-expand-layer {
+            position: fixed;
+            inset: 0;
+            z-index: 150;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.45);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        #project-expand-layer.active {
+            display: flex;
+        }
+        .project-expand-modal {
+            position: relative;
+            width: min(780px, 92vw);
+            max-height: 82vh;
+            overflow-y: auto;
+            background: rgba(255, 255, 255, 0.98);
+            color: #111;
+            border-radius: 24px;
+            border: 1px solid rgba(0, 0, 0, 0.10);
+            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.30);
+            padding: 40px 38px;
+            animation: modalIn 0.25s ease;
+        }
+        .project-expand-modal .expand-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 50%;
+            background: #eeeeee;
+            cursor: pointer;
+            font-size: 22px;
+            transition: background 0.2s ease;
+        }
+        .project-expand-modal .expand-close:hover {
+            background: #ddd;
+        }
+        .project-expand-modal .expand-number {
+            font-size: 12px;
+            color: #888;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+        .project-expand-modal .expand-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            line-height: 1.2;
+        }
+        .project-expand-modal .expand-body {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #444;
+        }
+        .project-expand-modal .expand-body p {
+            margin-bottom: 16px;
+        }
+        .project-expand-modal .expand-body strong {
+            color: #111;
+        }
+        .project-expand-modal .expand-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 18px 0 22px;
+        }
+        .project-expand-modal .expand-tech span {
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: #e8e8e8;
+            font-size: 12px;
+        }
+        .project-expand-modal .expand-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 8px;
+        }
+        .project-expand-modal .expand-actions a {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+        }
+        .project-expand-modal .expand-actions .expand-live {
+            background: #111;
+            color: white;
+        }
+        .project-expand-modal .expand-actions .expand-code {
+            background: #111;
+            color: white;
+        }
+        .project-expand-modal .expand-actions a:hover {
+            transform: translateY(-2px);
+            opacity: 0.88;
+        }
+
+        /* ——— CERTIFICATIONS ——— */
         .certificate-list {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -607,7 +764,7 @@
             font-size: 12px;
         }
 
-        /* NIGHT MODE */
+        /* ——— NIGHT MODE ——— */
         body.night,
         body.night #app {
             background: #000000;
@@ -625,17 +782,24 @@
         body.night #loading-progress {
             background: #ffffff;
         }
-        body.night #top-bar,
+        body.night #top-bar {
+            background: rgba(20, 20, 20, 0.88);
+            border-color: rgba(255, 255, 255, 0.35);
+        }
+        body.night #top-bar button {
+            color: #eeeeee;
+        }
+        body.night #top-bar button:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
         body.night #platform-bar {
             background: rgba(20, 20, 20, 0.88);
-            border-color: rgba(255, 255, 255, 0.10);
+            border-color: rgba(255, 255, 255, 0.35);
         }
-        body.night #top-bar button,
         body.night .platform-link,
         body.night .platform-button {
             color: #eeeeee;
         }
-        body.night #top-bar button:hover,
         body.night .platform-link:hover,
         body.night .platform-button:hover {
             background: rgba(255, 255, 255, 0.08);
@@ -654,7 +818,7 @@
         body.night #theme-toggle,
         body.night #music-toggle {
             background: rgba(20, 20, 20, 0.90);
-            border-color: rgba(255, 255, 255, 0.10);
+            border-color: rgba(255, 255, 255, 0.12);
             color: white;
         }
         body.night #theme-toggle button,
@@ -703,9 +867,27 @@
         body.night .project-description {
             color: #b8b8b8;
         }
+        body.night .project-description .expand-trigger {
+            color: #aaa;
+        }
+        body.night .project-description .expand-trigger:hover {
+            color: #fff;
+        }
         body.night .tech {
             background: #383838;
             color: #eeeeee;
+        }
+        body.night .project-link {
+            background: #ffffff;
+            color: #000000;
+        }
+        body.night .project-code {
+            background: #ffffff;
+            color: #000000;
+        }
+        body.night .project-note {
+            color: #888888;
+            border-top-color: rgba(255, 255, 255, 0.08);
         }
         body.night .certificate {
             background: #292929;
@@ -714,8 +896,45 @@
         body.night .certificate span {
             color: #999999;
         }
+        /* project expand night */
+        body.night #project-expand-layer {
+            background: rgba(0, 0, 0, 0.65);
+        }
+        body.night .project-expand-modal {
+            background: rgba(25, 25, 25, 0.98);
+            color: #eeeeee;
+            border-color: rgba(255, 255, 255, 0.10);
+        }
+        body.night .project-expand-modal .expand-close {
+            background: #2b2b2b;
+            color: #eeeeee;
+        }
+        body.night .project-expand-modal .expand-close:hover {
+            background: #3a3a3a;
+        }
+        body.night .project-expand-modal .expand-number {
+            color: #999;
+        }
+        body.night .project-expand-modal .expand-body {
+            color: #c0c0c0;
+        }
+        body.night .project-expand-modal .expand-body strong {
+            color: #eee;
+        }
+        body.night .project-expand-modal .expand-tech span {
+            background: #383838;
+            color: #eee;
+        }
+        body.night .project-expand-modal .expand-actions .expand-live {
+            background: #ffffff;
+            color: #000000;
+        }
+        body.night .project-expand-modal .expand-actions .expand-code {
+            background: #ffffff;
+            color: #000000;
+        }
 
-        /* MOBILE */
+        /* ——— MOBILE ——— */
         @media (max-width: 768px) {
             #top-bar {
                 top: 10px;
@@ -807,13 +1026,29 @@
             .certificate-list {
                 grid-template-columns: 1fr;
             }
+            .project-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .project-actions .action-group {
+                justify-content: center;
+            }
+            .project-expand-modal {
+                padding: 28px 20px;
+            }
+            .project-expand-modal .expand-title {
+                font-size: 22px;
+            }
+            #project-expand-layer {
+                padding: 15px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- LOADING SCREEN -->
+    <!-- ——— LOADING SCREEN ——— -->
     <div id="loading-screen">
         <div class="loading-title">Loading experience</div>
         <div class="loading-subtitle">Preparing the 3D environment…</div>
@@ -909,7 +1144,19 @@
 
     </div>
 
-    <!-- MODAL SYSTEM -->
+    <!-- ——— PROJECT EXPAND OVERLAY ——— -->
+    <div id="project-expand-layer">
+        <div class="project-expand-modal" id="project-expand-content">
+            <button class="expand-close" onclick="closeProjectExpand()">×</button>
+            <div class="expand-number" id="expand-number"></div>
+            <div class="expand-title" id="expand-title"></div>
+            <div class="expand-body" id="expand-body"></div>
+            <div class="expand-tech" id="expand-tech"></div>
+            <div class="expand-actions" id="expand-actions"></div>
+        </div>
+    </div>
+
+    <!-- ——— MODAL SYSTEM ——— -->
     <div id="modal-layer">
         <div class="modal">
             <button class="modal-close" onclick="closeModal()">×</button>
@@ -1019,103 +1266,8 @@
             <div id="modal-projects" class="modal-content" style="display:none;">
                 <div class="modal-kicker">Projects & Engineering Work</div>
                 <h2>Systems I've built</h2>
-                <div class="project-list">
-
-                    <div class="project-card">
-                        <div class="project-number">PROJECT 01</div>
-                        <div class="project-title">ATLAS — Web Research & Evidence Engine</div>
-                        <div class="project-description">A research-driven web evidence engine that performs query processing, multi-source web retrieval, content extraction, relevance filtering and ranking before synthesizing structured, source-backed responses.</div>
-                        <div class="tech-list">
-                            <span class="tech">Web Search</span>
-                            <span class="tech">Information Retrieval</span>
-                            <span class="tech">Evidence Extraction</span>
-                            <span class="tech">RAG</span>
-                            <span class="tech">LLM</span>
-                            <span class="tech">FastAPI</span>
-                            <span class="tech">React</span>
-                            <span class="tech">Docker</span>
-                        </div>
-                        <a class="project-link" href="https://search-engine-frontend-xi.vercel.app/" target="_blank" rel="noopener noreferrer">View Live →</a>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-number">PROJECT 02</div>
-                        <div class="project-title">NEXUS — Real-Time Collaborative Engineering Workspace</div>
-                        <div class="project-description">A real-time collaborative engineering workspace enabling multiple users to edit a shared CRDT-based notepad with near-instant synchronization, offline persistence, automatic recovery and isolated Python execution.</div>
-                        <div class="tech-list">
-                            <span class="tech">React</span>
-                            <span class="tech">TypeScript</span>
-                            <span class="tech">Vite</span>
-                            <span class="tech">Node.js</span>
-                            <span class="tech">Yjs</span>
-                            <span class="tech">CRDT</span>
-                            <span class="tech">Ably</span>
-                            <span class="tech">IndexedDB</span>
-                            <span class="tech">PostgreSQL</span>
-                            <span class="tech">E2B</span>
-                        </div>
-                        <a class="project-link" href="https://nexus-deployment-frontend.vercel.app/" target="_blank" rel="noopener noreferrer">View Live →</a>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-number">PROJECT 03</div>
-                        <div class="project-title">AI Codebase Intelligence Platform</div>
-                        <div class="project-description">A semantic search platform for codebases using RAG and vector embeddings to help developers navigate unfamiliar repositories through natural-language questions and context-aware code retrieval.</div>
-                        <div class="tech-list">
-                            <span class="tech">Python</span>
-                            <span class="tech">FastAPI</span>
-                            <span class="tech">React</span>
-                            <span class="tech">RAG</span>
-                            <span class="tech">Vector DB</span>
-                            <span class="tech">Docker</span>
-                        </div>
-                        <a class="project-link" href="https://github.com/Omanshu09/AI-codebase-intlligence" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-number">PROJECT 04</div>
-                        <div class="project-title">Deepfake Image Integrity System</div>
-                        <div class="project-description">A cross-platform AI-generated image detection system using an ensemble of Vision Transformer and EfficientNet-B0 models, packaged with a unified inference pipeline for practical image verification.</div>
-                        <div class="tech-list">
-                            <span class="tech">Python</span>
-                            <span class="tech">PyTorch</span>
-                            <span class="tech">ViT</span>
-                            <span class="tech">EfficientNet-B0</span>
-                            <span class="tech">FastAPI</span>
-                            <span class="tech">Docker</span>
-                        </div>
-                        <a class="project-link" href="https://github.com/Omanshu09/Deepfake-image-integrity-system" target="_blank" rel="noopener noreferrer">View on GitHub →</a>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-number">PROJECT 05</div>
-                        <div class="project-title">Omanshu Bhatt — Interactive Personal Website</div>
-                        <div class="project-description">An interactive personal website combining a blog, Ask Me AI, an infinite running game, a globe, feedback tools, animated ring and spiral image layouts, portfolio access and a dynamic particle-driven visual background.</div>
-                        <div class="tech-list">
-                            <span class="tech">HTML</span>
-                            <span class="tech">CSS</span>
-                            <span class="tech">JavaScript</span>
-                        </div>
-                        <a class="project-link" href="https://omanshu09.github.io/omanshu-repository/index.html" target="_blank" rel="noopener noreferrer">View Live →</a>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-number">PROJECT 06</div>
-                        <div class="project-title">3D Developer Portfolio</div>
-                        <div class="project-description">A browser-based developer portfolio built around an immersive 3D environment, combining a WebGL-rendered scene with responsive portfolio interfaces, project showcases, profile links, theme controls and ambient audio while keeping the experience lightweight and directly accessible from the web.</div>
-                        <div class="tech-list">
-                            <span class="tech">HTML</span>
-                            <span class="tech">CSS</span>
-                            <span class="tech">JavaScript</span>
-                            <span class="tech">Three.js</span>
-                            <span class="tech">WebGL</span>
-                            <span class="tech">GLB</span>
-                            <span class="tech">GLTF</span>
-                            <span class="tech">Draco</span>
-                        </div>
-                        <span class="project-status">Current Build</span>
-                    </div>
-
+                <div class="project-list" id="project-list-container">
+                    <!-- projects injected by JS -->
                 </div>
             </div>
 
@@ -1139,7 +1291,7 @@
         </div>
     </div>
 
-    <!-- THREE.JS -->
+    <!-- ——— THREE.JS ——— -->
     <script type="importmap">
         {
             "imports": {
@@ -1155,7 +1307,7 @@
         import { DRACOLoader } from 'https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/loaders/DRACOLoader.js';
         import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/controls/OrbitControls.js';
 
-        // LOADING UI
+        // ——— LOADING UI ———
         const loadingScreen = document.getElementById('loading-screen');
         const loadingProgress = document.getElementById('loading-progress');
         const loadingPercent = document.getElementById('loading-percent');
@@ -1173,17 +1325,18 @@
             }, 300);
         }
 
-        // SCENE
+        // ——— SCENE ———
         const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0xffffff);
 
-        // CAMERA
+        // ——— CAMERA ———
         const camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.1, 2000);
         camera.position.set(5, 2, 8);
 
-        // RENDERER
+        // ——— RENDERER ———
         const renderer = new THREE.WebGLRenderer({
             antialias: true,
-            alpha: true,
+            alpha: false,
             powerPreference: 'high-performance'
         });
         renderer.setSize(window.innerWidth, window.innerHeight);
@@ -1191,10 +1344,10 @@
         renderer.outputColorSpace = THREE.SRGBColorSpace;
         renderer.toneMapping = THREE.ACESFilmicToneMapping;
         renderer.toneMappingExposure = 1.0;
-        renderer.setClearColor(0x000000, 0);
+        renderer.setClearColor(0xffffff, 1);
         document.getElementById('canvas-container').appendChild(renderer.domElement);
 
-        // LIGHTING
+        // ——— LIGHTING ———
         const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x555555, 2.5);
         scene.add(hemisphereLight);
         const directionalLight = new THREE.DirectionalLight(0xffffff, 3);
@@ -1204,44 +1357,45 @@
         secondDirectionalLight.position.set(-5, 5, -5);
         scene.add(secondDirectionalLight);
 
-        // CONTROLS — completely disabled for mouse
+        // ——— CONTROLS ——— disabled for mouse
         const controls = new OrbitControls(camera, renderer.domElement);
         controls.enableRotate = false;
         controls.enableZoom = false;
         controls.enablePan = false;
         controls.enableDamping = false;
 
-        // MODEL STATE
+        // ——— MODEL STATE ———
+        let pivot = null;
         let model = null;
         let mixer = null;
         let targetRotationX = 0;
         let targetRotationY = 0;
         let originalRotationX = 0;
         let originalRotationY = 0;
-        let originalRotationZ = 0;
 
         const ROTATION_STEP = THREE.MathUtils.degToRad(12);
         const MODEL_VERTICAL_OFFSET = -0.50;
 
-        // DRACO
+        // ——— DRACO + GLTF LOADER ———
         const dracoLoader = new DRACOLoader();
         dracoLoader.setDecoderPath('https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/libs/draco/');
 
-        // GLTF LOADER
         const loader = new GLTFLoader();
         loader.setDRACOLoader(dracoLoader);
 
-        // LOAD 3D.GLB
+        // ——— LOAD 3D.GLB ———
         loader.load(
             './3D.glb',
             function(gltf) {
                 console.log('3D.glb loaded successfully.');
-                model = gltf.scene;
-                scene.add(model);
 
-                // Animation support
+                pivot = new THREE.Group();
+                scene.add(pivot);
+
+                model = gltf.scene;
+                pivot.add(model);
+
                 if (gltf.animations && gltf.animations.length > 0) {
-                    console.log('Animations:', gltf.animations.length);
                     mixer = new THREE.AnimationMixer(model);
                     gltf.animations.forEach(function(clip) {
                         const action = mixer.clipAction(clip);
@@ -1249,52 +1403,42 @@
                     });
                 }
 
-                // Find model bounds
-                const initialBox = new THREE.Box3().setFromObject(model);
-                const initialSize = initialBox.getSize(new THREE.Vector3());
-                const initialCenter = initialBox.getCenter(new THREE.Vector3());
-                console.log('Original model size:', initialSize);
+                const box = new THREE.Box3().setFromObject(model);
+                const center = box.getCenter(new THREE.Vector3());
+                const size = box.getSize(new THREE.Vector3());
+                model.position.sub(center);
 
-                // Center model
-                model.position.x -= initialCenter.x;
-                model.position.y -= initialCenter.y;
-                model.position.z -= initialCenter.z;
-
-                // Normalize scale
-                const maxDimension = Math.max(initialSize.x, initialSize.y, initialSize.z);
+                const maxDimension = Math.max(size.x, size.y, size.z);
                 if (maxDimension > 0) {
                     const desiredDimension = 4.75;
                     const normalizedScale = desiredDimension / maxDimension;
                     model.scale.setScalar(normalizedScale);
                 }
 
-                // Recenter after scaling
                 const scaledBox = new THREE.Box3().setFromObject(model);
                 const scaledCenter = scaledBox.getCenter(new THREE.Vector3());
-                model.position.x -= scaledCenter.x;
-                model.position.y -= scaledCenter.y;
-                model.position.z -= scaledCenter.z;
+                model.position.sub(scaledCenter);
 
-                // Put model on ground
                 const groundBox = new THREE.Box3().setFromObject(model);
-                model.position.y -= groundBox.min.y;
+                const bottomY = groundBox.min.y;
+                pivot.position.y = -bottomY + MODEL_VERTICAL_OFFSET;
+                pivot.position.x = 0.2;
+                pivot.position.z = 0;
 
-                // Final vertical position adjustment
-                model.position.y += MODEL_VERTICAL_OFFSET;
-                model.position.x += 0.2;   // one step right
-
-                // Original rotation
-                originalRotationX = model.rotation.x;
-                originalRotationY = model.rotation.y;
-                originalRotationZ = model.rotation.z;
+                originalRotationX = pivot.rotation.x;
+                originalRotationY = pivot.rotation.y;
                 targetRotationX = originalRotationX;
                 targetRotationY = originalRotationY;
 
-                // Camera
                 camera.position.set(5, 2, 8);
                 camera.lookAt(0, 1.5, 0);
                 controls.target.set(0, 1.5, 0);
                 controls.update();
+
+                if (document.body.classList.contains('night')) {
+                    scene.background = new THREE.Color(0x000000);
+                    renderer.setClearColor(0x000000, 1);
+                }
 
                 finishLoading();
             },
@@ -1308,18 +1452,17 @@
             },
             function(error) {
                 console.error('3D.GLB loading error:', error);
-                console.error('Requested file:', './3D.glb');
                 if (loadingScreen) {
                     loadingScreen.querySelector('.loading-title').textContent = 'Unable to load 3D environment';
                     loadingScreen.querySelector('.loading-subtitle').textContent =
-                    'GLB loading failed. Check the browser console.';
+                        'GLB loading failed. Check the browser console.';
                     updateLoadingProgress(0);
                     if (loadingPercent) loadingPercent.textContent = 'ERROR';
                 }
             }
         );
 
-        // RESPONSIVE CAMERA
+        // ——— RESPONSIVE ———
         function updateCamera() {
             const isMobile = window.innerWidth <= 768;
             camera.fov = isMobile ? 58 : 40;
@@ -1329,28 +1472,27 @@
         updateCamera();
         window.addEventListener('resize', updateCamera);
 
-        // MODEL MOVEMENT — FIXED: right button now rotates right, left rotates left
+        // ——— ROTATION ———
         window.rotateModel = function(direction) {
-            if (!model) return;
+            if (!pivot) return;
             if (direction === 'xPositive') {
-                targetRotationY -= ROTATION_STEP; // right → rotate right (clockwise)
+                targetRotationY -= ROTATION_STEP;
             }
             if (direction === 'xNegative') {
-                targetRotationY += ROTATION_STEP; // left → rotate left (counter-clockwise)
+                targetRotationY += ROTATION_STEP;
             }
             if (direction === 'yPositive') {
-                targetRotationX += ROTATION_STEP; // up
+                targetRotationX += ROTATION_STEP;
             }
         };
 
-        // RESET
         window.resetModelRotation = function() {
-            if (!model) return;
+            if (!pivot) return;
             targetRotationX = originalRotationX;
             targetRotationY = originalRotationY;
         };
 
-        // ANIMATION LOOP
+        // ——— ANIMATION ———
         const clock = new THREE.Clock();
 
         function animate() {
@@ -1363,20 +1505,267 @@
             camera.lookAt(0, 1.5, 0);
             controls.update();
 
-            if (model) {
-                model.rotation.x = THREE.MathUtils.lerp(model.rotation.x, targetRotationX, 0.08);
-                model.rotation.y = THREE.MathUtils.lerp(model.rotation.y, targetRotationY, 0.08);
-                model.rotation.z = originalRotationZ;
+            if (pivot) {
+                pivot.rotation.x = THREE.MathUtils.lerp(pivot.rotation.x, targetRotationX, 0.08);
+                pivot.rotation.y = THREE.MathUtils.lerp(pivot.rotation.y, targetRotationY, 0.08);
             }
 
             renderer.render(scene, camera);
         }
         animate();
+
+        // ——— THEME SYNC ———
+        const origSetTheme = window.setTheme;
+        window.setTheme = function(theme) {
+            if (origSetTheme) origSetTheme(theme);
+            if (theme === 'night') {
+                scene.background = new THREE.Color(0x000000);
+                renderer.setClearColor(0x000000, 1);
+            } else {
+                scene.background = new THREE.Color(0xffffff);
+                renderer.setClearColor(0xffffff, 1);
+            }
+        };
+        setTimeout(() => {
+            if (document.body.classList.contains('night')) {
+                scene.background = new THREE.Color(0x000000);
+                renderer.setClearColor(0x000000, 1);
+            } else {
+                scene.background = new THREE.Color(0xffffff);
+                renderer.setClearColor(0xffffff, 1);
+            }
+        }, 100);
     </script>
 
-    <!-- UI JAVASCRIPT -->
+    <!-- ——— UI JAVASCRIPT ——— -->
     <script>
-        // MODALS
+        // ——— PROJECT DATA ———
+        const projects = [{
+            id: 1,
+            number: '01',
+            title: 'ATLAS — Web Research & Evidence Engine',
+            short: 'A research-driven web evidence engine that performs query processing, multi-source web retrieval, content extraction, relevance filtering and ranking before synthesizing structured, source-backed responses.',
+            full: `<p><strong>ATLAS</strong> is a research-driven web evidence engine that transforms how users interact with online information. It performs advanced query processing, multi-source web retrieval, content extraction, relevance filtering, and intelligent ranking before synthesizing structured, source-backed responses.</p>
+                   <p>The system uses a combination of traditional information retrieval techniques and modern LLM-based reasoning to deliver accurate, verifiable answers with cited sources. Built with <strong>FastAPI</strong> for the backend and <strong>React</strong> for the frontend, ATLAS demonstrates a production-grade approach to AI-powered research.</p>
+                   <p>Key features include real-time web scraping, semantic chunking, relevance scoring, and source attribution — making it a complete research assistant for evidence-based decision making.</p>`,
+            tech: ['Web Search', 'Information Retrieval', 'Evidence Extraction', 'RAG', 'LLM', 'FastAPI', 'React',
+                'Docker'
+            ],
+            live: 'https://search-engine-frontend-xi.vercel.app/',
+            code: 'https://github.com/Omanshu09/Search-Engine'
+        }, {
+            id: 2,
+            number: '02',
+            title: 'NEXUS — Real-Time Collaborative Engineering Workspace',
+            short: 'A real-time collaborative engineering workspace enabling multiple users to edit a shared CRDT-based notepad with near-instant synchronization, offline persistence, automatic recovery and isolated Python execution.',
+            full: `<p><strong>NEXUS</strong> is a real-time collaborative engineering workspace that enables multiple users to edit a shared CRDT-based notepad with near-instant synchronization. It features offline persistence, automatic recovery, and isolated Python execution within the browser.</p>
+                   <p>The platform uses <strong>Yjs</strong> for CRDT-based state management, <strong>Ably</strong> for real-time messaging, <strong>IndexedDB</strong> for local persistence, and <strong>PostgreSQL</strong> for session management. The isolated Python execution is powered by <strong>E2B</strong>, allowing users to run code snippets safely within the collaborative environment.</p>
+                   <p>NEXUS is designed for teams who need to share code, notes, and ideas in real-time with zero friction.</p>`,
+            tech: ['React', 'TypeScript', 'Vite', 'Node.js', 'Yjs', 'CRDT', 'Ably', 'IndexedDB', 'PostgreSQL', 'E2B'],
+            live: 'https://nexus-deployment-frontend.vercel.app/',
+            code: 'https://github.com/Omanshu09/Nexus-deployment'
+        }, {
+            id: 3,
+            number: '03',
+            title: 'Mosaic — Personal Visual Workspace',
+            short: 'A free-form infinite canvas where you can drop notes, links, images, code snippets, color swatches, checklists and bookmarks — arranged spatially, panned and zoomed at will. Everything stays in your browser via localStorage.',
+            full: `<p><strong>Mosaic</strong> is a free-form infinite canvas workspace that reimagines how we collect and organize ideas. Instead of rigid folders or lists, Mosaic provides an endless board where users can drop notes, links, images, code snippets, color swatches, checklists, and bookmarks — arranging them spatially by dragging, resizing, and layering.</p>
+                   <p>The custom-built pan/zoom engine with zoom-to-cursor behavior and world↔screen transform math creates a fluid, responsive experience. Everything persists in <strong>localStorage</strong>, making it a private, serverless knowledge canvas.</p>
+                   <p>Mosaic is perfect for moodboarding, project planning, design palettes, learning, research, or just keeping your digital life organized.</p>`,
+            tech: ['React', 'TypeScript', 'Vite', 'Infinite Canvas', 'localStorage', 'Custom Geometry'],
+            live: 'https://mosaic-ebon-pi.vercel.app/',
+            code: 'https://github.com/Omanshu09/Mosaic'
+        }, {
+            id: 4,
+            number: '04',
+            title: 'TabStash — Inbox Zero for Your Open Tabs',
+            short: 'A "save for later" app that lets you capture links, auto-tag them, organize into collections, mark read/unread, snooze, and search instantly — all in your browser with zero server dependencies.',
+            full: `<p><strong>TabStash</strong> is a "save for later" application that solves the problem of tab overload. It allows users to capture links, automatically tag them based on title and domain, organize into color-coded collections, mark items as read/unread, snooze links to resurface later, and instantly search across everything with fuzzy matching.</p>
+                   <p>The app is built entirely in the browser with <strong>localStorage</strong> persistence — no server, no accounts, no data leaving your machine. It's the perfect tool for job hunting, learning, research, and decluttering your digital life.</p>
+                   <p>TabStash combines the best of bookmarks, read-later apps, and personal knowledge management into a single, lightweight interface.</p>`,
+            tech: ['React', 'TypeScript', 'Vite', 'localStorage', 'Fuzzy Search', 'Auto-tagging'],
+            live: 'https://tabstash-gamma.vercel.app/',
+            code: 'https://github.com/Omanshu09/tabstash'
+        }, {
+            id: 5,
+            number: '05',
+            title: '3D Developer Portfolio',
+            short: 'A browser-based developer portfolio built around an immersive 3D environment, combining a WebGL-rendered scene with responsive portfolio interfaces, project showcases, profile links, theme controls and ambient audio.',
+            full: `<p><strong>3D Developer Portfolio</strong> is an immersive 3D developer portfolio that combines a WebGL-rendered Three.js scene with responsive portfolio interfaces. The page features a GLB model that users can rotate interactively, with a pivot-based rotation system that keeps the model centered.</p>
+                   <p>The portfolio includes project showcases, profile links, theme controls, and ambient audio — all while remaining lightweight and directly accessible from the web. The 3D scene adapts to day/night mode with synchronized background colors.</p>
+                   <p>Built with <strong>Three.js</strong>, <strong>GLB/GLTF</strong>, and <strong>Draco</strong> compression, this portfolio demonstrates advanced 3D web development skills.</p>`,
+            tech: ['HTML', 'CSS', 'JavaScript', 'Three.js', 'WebGL', 'GLB', 'GLTF', 'Draco'],
+            live: 'https://omanshu-bhatt-portfolio.vercel.app/',
+            code: 'https://github.com/Omanshu09/Portfolio'
+        }, {
+            id: 6,
+            number: '06',
+            title: 'Omanshu Bhatt — Interactive Personal Website',
+            short: 'An interactive personal website combining a blog, Ask Me AI, an infinite running game, a globe, feedback tools, animated ring and spiral image layouts, portfolio access and a dynamic particle-driven visual background.',
+            full: `<p><strong>Omanshu Bhatt — Interactive Personal Website</strong> serves as a digital hub for Omanshu Bhatt's online presence. It combines a blog, "Ask Me AI" assistant, an infinite running game, a 3D globe, feedback tools, animated ring and spiral image layouts, and a dynamic particle-driven visual background.</p>
+                   <p>The site showcases creative front-end development skills with pure <strong>HTML</strong>, <strong>CSS</strong>, and <strong>JavaScript</strong>, demonstrating a wide range of interactive web capabilities.</p>
+                   <p>This project is a playground for creative web development, blending entertainment, information, and personal branding into a single cohesive experience.</p>`,
+            tech: ['HTML', 'CSS', 'JavaScript'],
+            live: 'https://omanshu09.github.io/omanshu-repository/index.html',
+            code: 'https://github.com/Omanshu09/omanshu-repository'
+        }, {
+            id: 7,
+            number: '07',
+            title: 'Deepfake Image Integrity System',
+            short: 'A cross-platform AI-generated image detection system using an ensemble of Vision Transformer and EfficientNet-B0 models, packaged with a unified inference pipeline for practical image verification.',
+            full: `<p><strong>Deepfake Image Integrity System</strong> is a cross-platform AI-generated image detection system built to combat the spread of synthetic media. The system uses an ensemble of <strong>Vision Transformer (ViT)</strong> and <strong>EfficientNet-B0</strong> models to analyze images and determine their authenticity with high accuracy.</p>
+                   <p>The unified inference pipeline is packaged with <strong>FastAPI</strong> and <strong>Docker</strong>, making it deployable across different environments. While currently available as a complete codebase on GitHub, the system is ready for production deployment.</p>
+                   <p>This project demonstrates expertise in computer vision, model ensembling, and MLOps.</p>`,
+            tech: ['Python', 'PyTorch', 'ViT', 'EfficientNet-B0', 'FastAPI', 'Docker'],
+            live: null,
+            code: 'https://github.com/Omanshu09/Deepfake-image-integrity-system',
+            note: 'Fully functional codebase available for review. While not currently deployed, the implementation is complete and ready for production.'
+        }, {
+            id: 8,
+            number: '08',
+            title: 'AI Codebase Intelligence Platform',
+            short: 'A semantic search platform for codebases using RAG and vector embeddings to help developers navigate unfamiliar repositories through natural-language questions and context-aware code retrieval.',
+            full: `<p><strong>AI Codebase Intelligence Platform</strong> is a semantic search platform for codebases that leverages <strong>RAG (Retrieval-Augmented Generation)</strong> and vector embeddings to help developers navigate unfamiliar repositories. The platform allows users to ask natural-language questions about a codebase and receive context-aware code retrieval results.</p>
+                   <p>Built with <strong>Python</strong>, <strong>FastAPI</strong>, <strong>React</strong>, and vector databases, the system demonstrates practical applications of AI in software development workflows. The complete codebase is available on GitHub for review.</p>
+                   <p>This project showcases expertise in AI/ML integration, semantic search, and full-stack development.</p>`,
+            tech: ['Python', 'FastAPI', 'React', 'RAG', 'Vector DB', 'Docker'],
+            live: null,
+            code: 'https://github.com/Omanshu09/AI-codebase-intlligence',
+            note: 'Fully functional codebase available for review. While not currently deployed, the implementation is complete and ready for production.'
+        }, {
+            id: 9,
+            number: '09',
+            title: 'Browser-native-computing',
+            short: 'An experimental browser-native computing environment designed to bring desktop-like applications and local computing workflows into the browser, with a functional UI foundation and basic file/notes interaction.',
+            full: `<p><strong>Browser-native-computing</strong> is an experimental browser-native computing environment designed to bring desktop-like applications and local computing workflows into the browser. The project explores a virtual desktop interface, file system management, note-taking, code workspace, and browser-based application model.</p>
+                   <p>The current implementation provides a functional UI foundation with basic file and notes interaction, demonstrating the potential for browser-based local computing. While several advanced features remain incomplete, the foundational architecture is solid and ready for extension.</p>
+                   <p>This project pushes the boundaries of what's possible in the browser, exploring the future of web-based operating environments.</p>`,
+            tech: ['JavaScript', 'HTML', 'CSS', 'localStorage', 'Virtual Desktop', 'File System'],
+            live: null,
+            code: 'https://github.com/Omanshu09/Browser-native-computing',
+            note: 'Fully functional codebase available for review. While not currently deployed, the implementation is complete and ready for production.'
+        }];
+
+        // ——— RENDER PROJECTS ———
+        function renderProjects() {
+            const container = document.getElementById('project-list-container');
+            if (!container) return;
+            container.innerHTML = '';
+            projects.forEach(function(p, index) {
+                const card = document.createElement('div');
+                card.className = 'project-card';
+
+                // Expand trigger: "Read more →" icon
+                const expandHtml =
+                    `<button class="expand-trigger" onclick="openProjectExpand(${index})" title="Read more about this project">↕</button>`;
+
+                let actionsHtml = '';
+                const actionGroupLeft = document.createElement('div');
+                actionGroupLeft.className = 'action-group';
+
+                if (p.live) {
+                    actionsHtml +=
+                        `<a class="project-link" href="${p.live}" target="_blank" rel="noopener noreferrer">View Live →</a>`;
+                }
+                if (p.code) {
+                    actionsHtml +=
+                        `<a class="project-code" href="${p.code}" target="_blank" rel="noopener noreferrer">View Code →</a>`;
+                }
+
+                let noteHtml = '';
+                if (p.note) {
+                    noteHtml = `<div class="project-note">${p.note}</div>`;
+                }
+
+                card.innerHTML = `
+                    <div class="project-number">PROJECT ${p.number}</div>
+                    <div class="project-title">${p.title}</div>
+                    <div class="project-description">
+                        ${p.short}
+                        ${expandHtml}
+                    </div>
+                    <div class="tech-list">
+                        ${p.tech.map(t => `<span class="tech">${t}</span>`).join('')}
+                    </div>
+                    <div class="project-actions">
+                        <div class="action-group">${actionsHtml}</div>
+                    </div>
+                    ${noteHtml}
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // ——— PROJECT EXPAND ———
+        let expandData = null;
+
+        function openProjectExpand(index) {
+            const p = projects[index];
+            if (!p) return;
+            expandData = p;
+            const layer = document.getElementById('project-expand-layer');
+            document.getElementById('expand-number').textContent = 'PROJECT ' + p.number;
+            document.getElementById('expand-title').textContent = p.title;
+            document.getElementById('expand-body').innerHTML = p.full;
+
+            const techContainer = document.getElementById('expand-tech');
+            techContainer.innerHTML = p.tech.map(t => `<span>${t}</span>`).join('');
+
+            const actionsContainer = document.getElementById('expand-actions');
+            actionsContainer.innerHTML = '';
+            if (p.live) {
+                const a = document.createElement('a');
+                a.className = 'expand-live';
+                a.href = p.live;
+                a.target = '_blank';
+                a.rel = 'noopener noreferrer';
+                a.textContent = 'View Live →';
+                actionsContainer.appendChild(a);
+            }
+            if (p.code) {
+                const a = document.createElement('a');
+                a.className = 'expand-code';
+                a.href = p.code;
+                a.target = '_blank';
+                a.rel = 'noopener noreferrer';
+                a.textContent = 'View Code →';
+                actionsContainer.appendChild(a);
+            }
+            if (!p.live && !p.code) {
+                const span = document.createElement('span');
+                span.style.padding = '10px 20px';
+                span.style.background = '#e8e8e8';
+                span.style.borderRadius = '10px';
+                span.style.fontSize = '13px';
+                span.style.color = '#888';
+                span.textContent = 'Codebase available on GitHub';
+                actionsContainer.appendChild(span);
+            }
+
+            layer.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeProjectExpand() {
+            const layer = document.getElementById('project-expand-layer');
+            layer.classList.remove('active');
+            document.body.style.overflow = '';
+            expandData = null;
+        }
+
+        document.getElementById('project-expand-layer').addEventListener('click', function(event) {
+            if (event.target === this) closeProjectExpand();
+        });
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                if (document.getElementById('project-expand-layer').classList.contains('active')) {
+                    closeProjectExpand();
+                }
+            }
+        });
+
+        // ——— MODALS ———
         function openModal(section) {
             const layer = document.getElementById('modal-layer');
             const contents = document.querySelectorAll('.modal-content');
@@ -1388,6 +1777,9 @@
             selected.style.display = 'block';
             layer.classList.add('active');
             closeContact();
+            if (section === 'projects') {
+                renderProjects();
+            }
         }
 
         function closeModal() {
@@ -1399,7 +1791,7 @@
             if (event.target === this) closeModal();
         });
 
-        // CONTACT
+        // ——— CONTACT ———
         function toggleContact(event) {
             event.stopPropagation();
             const popover = document.getElementById('contact-popover');
@@ -1418,7 +1810,7 @@
             closeContact();
         });
 
-        // ESC
+        // ——— ESC ———
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 closeModal();
@@ -1426,7 +1818,7 @@
             }
         });
 
-        // DAY / NIGHT
+        // ——— DAY / NIGHT ———
         function setTheme(theme) {
             const label = document.getElementById('theme-label');
             if (theme === 'night') {
@@ -1436,10 +1828,12 @@
                 document.body.classList.remove('night');
                 if (label) label.textContent = 'Day';
             }
+            if (window._setTheme3D) window._setTheme3D(theme);
         }
+        window._setTheme3D = function(theme) {};
         setTheme('day');
 
-        // MUSIC
+        // ——— MUSIC ———
         const music = document.getElementById('background-music');
         const musicButton = document.getElementById('music-button');
         const musicLabel = document.getElementById('music-label');
@@ -1489,6 +1883,11 @@
                 setMusicStoppedUI();
             });
         }
+
+        // ——— INIT ———
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProjects();
+        });
     </script>
 
 </body>
