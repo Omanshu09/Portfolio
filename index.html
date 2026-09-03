@@ -1546,8 +1546,8 @@
             title: 'ATLAS — Web Research & Evidence Engine',
             short: 'A research-driven web evidence engine that performs query processing, multi-source web retrieval, content extraction, relevance filtering and ranking before synthesizing structured, source-backed responses.',
             full: `<p><strong>ATLAS</strong> is a research-driven web evidence engine that transforms how users interact with online information. It performs advanced query processing, multi-source web retrieval, content extraction, relevance filtering, and intelligent ranking before synthesizing structured, source-backed responses.</p>
-                   <p>The system uses a combination of traditional information retrieval techniques and modern LLM-based reasoning to deliver accurate, verifiable answers with cited sources. Built with <strong>FastAPI</strong> for the backend and <strong>React</strong> for the frontend, ATLAS demonstrates a production-grade approach to AI-powered research.</p>
-                   <p>Key features include real-time web scraping, semantic chunking, relevance scoring, and source attribution — making it a complete research assistant for evidence-based decision making.</p>`,
+                       <p>The system uses a combination of traditional information retrieval techniques and modern LLM-based reasoning to deliver accurate, verifiable answers with cited sources. Built with <strong>FastAPI</strong> for the backend and <strong>React</strong> for the frontend, ATLAS demonstrates a production-grade approach to AI-powered research.</p>
+                       <p>Key features include real-time web scraping, semantic chunking, relevance scoring, and source attribution — making it a complete research assistant for evidence-based decision making.</p>`,
             tech: ['Web Search', 'Information Retrieval', 'Evidence Extraction', 'RAG', 'LLM', 'FastAPI', 'React',
                 'Docker'
             ],
@@ -1559,87 +1559,99 @@
             title: 'NEXUS — Real-Time Collaborative Engineering Workspace',
             short: 'A real-time collaborative engineering workspace enabling multiple users to edit a shared CRDT-based notepad with near-instant synchronization, offline persistence, automatic recovery and isolated Python execution.',
             full: `<p><strong>NEXUS</strong> is a real-time collaborative engineering workspace that enables multiple users to edit a shared CRDT-based notepad with near-instant synchronization. It features offline persistence, automatic recovery, and isolated Python execution within the browser.</p>
-                   <p>The platform uses <strong>Yjs</strong> for CRDT-based state management, <strong>Ably</strong> for real-time messaging, <strong>IndexedDB</strong> for local persistence, and <strong>PostgreSQL</strong> for session management. The isolated Python execution is powered by <strong>E2B</strong>, allowing users to run code snippets safely within the collaborative environment.</p>
-                   <p>NEXUS is designed for teams who need to share code, notes, and ideas in real-time with zero friction.</p>`,
+                       <p>The platform uses <strong>Yjs</strong> for CRDT-based state management, <strong>Ably</strong> for real-time messaging, <strong>IndexedDB</strong> for local persistence, and <strong>PostgreSQL</strong> for session management. The isolated Python execution is powered by <strong>E2B</strong>, allowing users to run code snippets safely within the collaborative environment.</p>
+                       <p>NEXUS is designed for teams who need to share code, notes, and ideas in real-time with zero friction.</p>`,
             tech: ['React', 'TypeScript', 'Vite', 'Node.js', 'Yjs', 'CRDT', 'Ably', 'IndexedDB', 'PostgreSQL', 'E2B'],
             live: 'https://nexus-deployment-frontend.vercel.app/',
             code: 'https://github.com/Omanshu09/Nexus-deployment'
         }, {
             id: 3,
             number: '03',
+            title: 'Second Brain — Visual Knowledge Graph for Ideas',
+            short: 'A visual knowledge graph that transforms rough ideas into an interactive map of concepts. Type a project idea, and AI extracts topics, links them, and lets you explore them on a custom SVG canvas with pan, zoom, and drag.',
+            full: `<p><strong>Second Brain</strong> is a visual knowledge graph that turns a rough idea into a living map of concepts — not a chat box. Type a project idea, and AI pulls out the real topics, links them, and lets you explore them on a canvas.</p>
+                       <p><strong>Demo flow:</strong> You land on a clean white screen: "Turn anything into a living map of ideas." You type something like "I want to build an AI note app that summarizes meetings." (or click a sample chip). The AI (Groq) ingests it: writes a 1–2 sentence summary, extracts 4–8 concept nodes (each tagged as <strong>concept</strong> / <strong>source</strong> / <strong>action</strong> / <strong>question</strong>), and draws edges/links showing how ideas connect. You see a canvas with colored, pill-shaped node cards connected by lines. Interact: drag empty space to pan, scroll to zoom, click any node and the AI explains it in context, press + to add more material and the map grows. Everything auto-saves to browser <strong>localStorage</strong>.</p>
+                       <p><strong>Tech stack:</strong> React + TypeScript + Vite on the frontend, a custom hand-built SVG canvas (no graph library) with pan/zoom/drag, Groq AI (openai/gpt-oss-120b, free) for intelligence, and a Vercel serverless function (<code>api/brain.ts</code>) as the secure middleman that keeps your API key safe — never exposed in the browser. The architecture is clean: browser ↔ Vercel function ↔ Groq API, with the key held as an env var on the server.</p>
+                       <p><strong>Why it stands out:</strong> It's a different interaction paradigm — a visual knowledge graph, not a chat thread. It demonstrates real front-end engineering with a custom canvas, pan/zoom/drag, node layout, and persistence all hand-coded. It has a real product thesis: "organize your ideas visually, personalized to you." And it's security-aware — showing you understand how to safely use API keys on a front-end app, a real job skill.</p>`,
+            tech: ['React', 'TypeScript', 'Vite', 'Groq AI', 'Vercel Serverless', 'Custom SVG Canvas', 'localStorage'],
+            live: 'https://second-brain-omanshu.vercel.app/',
+            code: 'https://github.com/Omanshu09/SecondBrain'
+        }, {
+            id: 4,
+            number: '04',
             title: 'Mosaic — Personal Visual Workspace',
             short: 'A free-form infinite canvas where you can drop notes, links, images, code snippets, color swatches, checklists and bookmarks — arranged spatially, panned and zoomed at will. Everything stays in your browser via localStorage.',
             full: `<p><strong>Mosaic</strong> is a free-form infinite canvas workspace that reimagines how we collect and organize ideas. Instead of rigid folders or lists, Mosaic provides an endless board where users can drop notes, links, images, code snippets, color swatches, checklists, and bookmarks — arranging them spatially by dragging, resizing, and layering.</p>
-                   <p>The custom-built pan/zoom engine with zoom-to-cursor behavior and world↔screen transform math creates a fluid, responsive experience. Everything persists in <strong>localStorage</strong>, making it a private, serverless knowledge canvas.</p>
-                   <p>Mosaic is perfect for moodboarding, project planning, design palettes, learning, research, or just keeping your digital life organized.</p>`,
+                       <p>The custom-built pan/zoom engine with zoom-to-cursor behavior and world↔screen transform math creates a fluid, responsive experience. Everything persists in <strong>localStorage</strong>, making it a private, serverless knowledge canvas.</p>
+                       <p>Mosaic is perfect for moodboarding, project planning, design palettes, learning, research, or just keeping your digital life organized.</p>`,
             tech: ['React', 'TypeScript', 'Vite', 'Infinite Canvas', 'localStorage', 'Custom Geometry'],
             live: 'https://mosaic-ebon-pi.vercel.app/',
             code: 'https://github.com/Omanshu09/Mosaic'
         }, {
-            id: 4,
-            number: '04',
+            id: 5,
+            number: '05',
             title: 'TabStash — Inbox Zero for Your Open Tabs',
             short: 'A "save for later" app that lets you capture links, auto-tag them, organize into collections, mark read/unread, snooze, and search instantly — all in your browser with zero server dependencies.',
             full: `<p><strong>TabStash</strong> is a "save for later" application that solves the problem of tab overload. It allows users to capture links, automatically tag them based on title and domain, organize into color-coded collections, mark items as read/unread, snooze links to resurface later, and instantly search across everything with fuzzy matching.</p>
-                   <p>The app is built entirely in the browser with <strong>localStorage</strong> persistence — no server, no accounts, no data leaving your machine. It's the perfect tool for job hunting, learning, research, and decluttering your digital life.</p>
-                   <p>TabStash combines the best of bookmarks, read-later apps, and personal knowledge management into a single, lightweight interface.</p>`,
+                       <p>The app is built entirely in the browser with <strong>localStorage</strong> persistence — no server, no accounts, no data leaving your machine. It's the perfect tool for job hunting, learning, research, and decluttering your digital life.</p>
+                       <p>TabStash combines the best of bookmarks, read-later apps, and personal knowledge management into a single, lightweight interface.</p>`,
             tech: ['React', 'TypeScript', 'Vite', 'localStorage', 'Fuzzy Search', 'Auto-tagging'],
             live: 'https://tabstash-gamma.vercel.app/',
             code: 'https://github.com/Omanshu09/tabstash'
         }, {
-            id: 5,
-            number: '05',
+            id: 6,
+            number: '06',
             title: '3D Developer Portfolio',
             short: 'A browser-based developer portfolio built around an immersive 3D environment, combining a WebGL-rendered scene with responsive portfolio interfaces, project showcases, profile links, theme controls and ambient audio.',
             full: `<p><strong>3D Developer Portfolio</strong> is an immersive 3D developer portfolio that combines a WebGL-rendered Three.js scene with responsive portfolio interfaces. The page features a GLB model that users can rotate interactively, with a pivot-based rotation system that keeps the model centered.</p>
-                   <p>The portfolio includes project showcases, profile links, theme controls, and ambient audio — all while remaining lightweight and directly accessible from the web. The 3D scene adapts to day/night mode with synchronized background colors.</p>
-                   <p>Built with <strong>Three.js</strong>, <strong>GLB/GLTF</strong>, and <strong>Draco</strong> compression, this portfolio demonstrates advanced 3D web development skills.</p>`,
+                       <p>The portfolio includes project showcases, profile links, theme controls, and ambient audio — all while remaining lightweight and directly accessible from the web. The 3D scene adapts to day/night mode with synchronized background colors.</p>
+                       <p>Built with <strong>Three.js</strong>, <strong>GLB/GLTF</strong>, and <strong>Draco</strong> compression, this portfolio demonstrates advanced 3D web development skills.</p>`,
             tech: ['HTML', 'CSS', 'JavaScript', 'Three.js', 'WebGL', 'GLB', 'GLTF', 'Draco'],
             live: 'https://omanshu-bhatt-portfolio.vercel.app/',
             code: 'https://github.com/Omanshu09/Portfolio'
         }, {
-            id: 6,
-            number: '06',
+            id: 7,
+            number: '07',
             title: 'Omanshu Bhatt — Interactive Personal Website',
             short: 'An interactive personal website combining a blog, Ask Me AI, an infinite running game, a globe, feedback tools, animated ring and spiral image layouts, portfolio access and a dynamic particle-driven visual background.',
             full: `<p><strong>Omanshu Bhatt — Interactive Personal Website</strong> serves as a digital hub for Omanshu Bhatt's online presence. It combines a blog, "Ask Me AI" assistant, an infinite running game, a 3D globe, feedback tools, animated ring and spiral image layouts, and a dynamic particle-driven visual background.</p>
-                   <p>The site showcases creative front-end development skills with pure <strong>HTML</strong>, <strong>CSS</strong>, and <strong>JavaScript</strong>, demonstrating a wide range of interactive web capabilities.</p>
-                   <p>This project is a playground for creative web development, blending entertainment, information, and personal branding into a single cohesive experience.</p>`,
+                       <p>The site showcases creative front-end development skills with pure <strong>HTML</strong>, <strong>CSS</strong>, and <strong>JavaScript</strong>, demonstrating a wide range of interactive web capabilities.</p>
+                       <p>This project is a playground for creative web development, blending entertainment, information, and personal branding into a single cohesive experience.</p>`,
             tech: ['HTML', 'CSS', 'JavaScript'],
             live: 'https://omanshu09.github.io/omanshu-repository/index.html',
             code: 'https://github.com/Omanshu09/omanshu-repository'
         }, {
-            id: 7,
-            number: '07',
+            id: 8,
+            number: '08',
             title: 'Deepfake Image Integrity System',
             short: 'A cross-platform AI-generated image detection system using an ensemble of Vision Transformer and EfficientNet-B0 models, packaged with a unified inference pipeline for practical image verification.',
             full: `<p><strong>Deepfake Image Integrity System</strong> is a cross-platform AI-generated image detection system built to combat the spread of synthetic media. The system uses an ensemble of <strong>Vision Transformer (ViT)</strong> and <strong>EfficientNet-B0</strong> models to analyze images and determine their authenticity with high accuracy.</p>
-                   <p>The unified inference pipeline is packaged with <strong>FastAPI</strong> and <strong>Docker</strong>, making it deployable across different environments. While currently available as a complete codebase on GitHub, the system is ready for production deployment.</p>
-                   <p>This project demonstrates expertise in computer vision, model ensembling, and MLOps.</p>`,
+                       <p>The unified inference pipeline is packaged with <strong>FastAPI</strong> and <strong>Docker</strong>, making it deployable across different environments. While currently available as a complete codebase on GitHub, the system is ready for production deployment.</p>
+                       <p>This project demonstrates expertise in computer vision, model ensembling, and MLOps.</p>`,
             tech: ['Python', 'PyTorch', 'ViT', 'EfficientNet-B0', 'FastAPI', 'Docker'],
             live: null,
             code: 'https://github.com/Omanshu09/Deepfake-image-integrity-system',
             note: 'Fully functional codebase available for review. While not currently deployed, the implementation is complete and ready for production.'
         }, {
-            id: 8,
-            number: '08',
+            id: 9,
+            number: '09',
             title: 'AI Codebase Intelligence Platform',
             short: 'A semantic search platform for codebases using RAG and vector embeddings to help developers navigate unfamiliar repositories through natural-language questions and context-aware code retrieval.',
             full: `<p><strong>AI Codebase Intelligence Platform</strong> is a semantic search platform for codebases that leverages <strong>RAG (Retrieval-Augmented Generation)</strong> and vector embeddings to help developers navigate unfamiliar repositories. The platform allows users to ask natural-language questions about a codebase and receive context-aware code retrieval results.</p>
-                   <p>Built with <strong>Python</strong>, <strong>FastAPI</strong>, <strong>React</strong>, and vector databases, the system demonstrates practical applications of AI in software development workflows. The complete codebase is available on GitHub for review.</p>
-                   <p>This project showcases expertise in AI/ML integration, semantic search, and full-stack development.</p>`,
+                       <p>Built with <strong>Python</strong>, <strong>FastAPI</strong>, <strong>React</strong>, and vector databases, the system demonstrates practical applications of AI in software development workflows. The complete codebase is available on GitHub for review.</p>
+                       <p>This project showcases expertise in AI/ML integration, semantic search, and full-stack development.</p>`,
             tech: ['Python', 'FastAPI', 'React', 'RAG', 'Vector DB', 'Docker'],
             live: null,
             code: 'https://github.com/Omanshu09/AI-codebase-intlligence',
             note: 'Fully functional codebase available for review. While not currently deployed, the implementation is complete and ready for production.'
         }, {
-            id: 9,
-            number: '09',
+            id: 10,
+            number: '10',
             title: 'Browser-native-computing',
             short: 'An experimental browser-native computing environment designed to bring desktop-like applications and local computing workflows into the browser, with a functional UI foundation and basic file/notes interaction.',
             full: `<p><strong>Browser-native-computing</strong> is an experimental browser-native computing environment designed to bring desktop-like applications and local computing workflows into the browser. The project explores a virtual desktop interface, file system management, note-taking, code workspace, and browser-based application model.</p>
-                   <p>The current implementation provides a functional UI foundation with basic file and notes interaction, demonstrating the potential for browser-based local computing. While several advanced features remain incomplete, the foundational architecture is solid and ready for extension.</p>
-                   <p>This project pushes the boundaries of what's possible in the browser, exploring the future of web-based operating environments.</p>`,
+                       <p>The current implementation provides a functional UI foundation with basic file and notes interaction, demonstrating the potential for browser-based local computing. While several advanced features remain incomplete, the foundational architecture is solid and ready for extension.</p>
+                       <p>This project pushes the boundaries of what's possible in the browser, exploring the future of web-based operating environments.</p>`,
             tech: ['JavaScript', 'HTML', 'CSS', 'localStorage', 'Virtual Desktop', 'File System'],
             live: null,
             code: 'https://github.com/Omanshu09/Browser-native-computing',
@@ -1678,20 +1690,20 @@
                 }
 
                 card.innerHTML = `
-                    <div class="project-number">PROJECT ${p.number}</div>
-                    <div class="project-title">${p.title}</div>
-                    <div class="project-description">
-                        ${p.short}
-                        ${expandHtml}
-                    </div>
-                    <div class="tech-list">
-                        ${p.tech.map(t => `<span class="tech">${t}</span>`).join('')}
-                    </div>
-                    <div class="project-actions">
-                        <div class="action-group">${actionsHtml}</div>
-                    </div>
-                    ${noteHtml}
-                `;
+                        <div class="project-number">PROJECT ${p.number}</div>
+                        <div class="project-title">${p.title}</div>
+                        <div class="project-description">
+                            ${p.short}
+                            ${expandHtml}
+                        </div>
+                        <div class="tech-list">
+                            ${p.tech.map(t => `<span class="tech">${t}</span>`).join('')}
+                        </div>
+                        <div class="project-actions">
+                            <div class="action-group">${actionsHtml}</div>
+                        </div>
+                        ${noteHtml}
+                    `;
                 container.appendChild(card);
             });
         }
