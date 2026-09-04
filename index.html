@@ -7,6 +7,9 @@
     <title>Omanshu Bhatt — AI/ML & Full-Stack Developer</title>
     <link rel="preload" href="./3D.glb" as="fetch" crossorigin="anonymous" />
 
+    <!-- Font Awesome 6 (free) for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
     <style>
         /* ——— GLOBAL RESET ——— */
         * {
@@ -515,11 +518,20 @@
             gap: 8px;
         }
         .skill {
-            padding: 8px 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 14px;
             background: #f1f1f1;
             border-radius: 999px;
             font-size: 13px;
             color: #333;
+        }
+        .skill i {
+            font-size: 15px;
+            width: 1.1em;
+            text-align: center;
+            color: #444;
         }
 
         /* ——— PROJECTS ——— */
@@ -558,10 +570,19 @@
             margin-bottom: 16px;
         }
         .tech {
-            padding: 5px 9px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 11px;
             border-radius: 999px;
             background: #e8e8e8;
             font-size: 11px;
+        }
+        .tech i {
+            font-size: 12px;
+            width: 1em;
+            text-align: center;
+            color: #555;
         }
         .project-actions {
             display: flex;
@@ -624,19 +645,36 @@
             gap: 12px;
         }
         .certificate {
+            display: flex;
+            align-items: center;
+            gap: 12px;
             padding: 17px;
             border-radius: 15px;
             background: #f6f6f6;
             border: 1px solid rgba(0, 0, 0, 0.07);
         }
-        .certificate strong {
+        .certificate-icon {
+            font-size: 26px;
+            width: 40px;
+            text-align: center;
+            flex-shrink: 0;
+            color: #555;
+        }
+        .certificate-info strong {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
             font-size: 14px;
         }
-        .certificate span {
+        .certificate-info span {
             color: #777;
             font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .certificate-info span i {
+            font-size: 13px;
+            color: #888;
         }
 
         /* ——— NIGHT MODE ——— */
@@ -729,6 +767,9 @@
             background: #2b2b2b;
             color: #eeeeee;
         }
+        body.night .skill i {
+            color: #bbbbbb;
+        }
         body.night .skill-group-title {
             color: #999999;
         }
@@ -746,6 +787,9 @@
             background: #383838;
             color: #eeeeee;
         }
+        body.night .tech i {
+            color: #bbbbbb;
+        }
         body.night .project-link {
             background: #ffffff;
             color: #000000;
@@ -762,8 +806,14 @@
             background: #292929;
             border-color: rgba(255, 255, 255, 0.08);
         }
-        body.night .certificate span {
+        body.night .certificate-icon {
+            color: #bbbbbb;
+        }
+        body.night .certificate-info span {
             color: #999999;
+        }
+        body.night .certificate-info span i {
+            color: #888888;
         }
 
         /* ——— MOBILE ——— */
@@ -996,79 +1046,80 @@
                 <div class="skill-group">
                     <div class="skill-group-title">Languages</div>
                     <div class="skill-list">
-                        <span class="skill">Python</span>
-                        <span class="skill">Go</span>
-                        <span class="skill">Java</span>
-                        <span class="skill">JavaScript</span>
-                        <span class="skill">C</span>
+                        <span class="skill"><i class="fab fa-python"></i>Python</span>
+                        <span class="skill"><i class="fab fa-golang"></i>Go</span>
+                        <span class="skill"><i class="fab fa-java"></i>Java</span>
+                        <span class="skill"><i class="fab fa-js"></i>JavaScript</span>
+                        <span class="skill"><i class="fas fa-code"></i>C</span>
+                        <span class="skill"><i class="fab fa-typescript"></i>TypeScript</span>
                     </div>
                 </div>
 
                 <div class="skill-group">
                     <div class="skill-group-title">Web & Frameworks</div>
                     <div class="skill-list">
-                        <span class="skill">React.js</span>
-                        <span class="skill">FastAPI</span>
-                        <span class="skill">Node.js</span>
-                        <span class="skill">Django</span>
-                        <span class="skill">HTML</span>
-                        <span class="skill">CSS</span>
+                        <span class="skill"><i class="fab fa-react"></i>React.js</span>
+                        <span class="skill"><i class="fas fa-bolt"></i>FastAPI</span>
+                        <span class="skill"><i class="fab fa-node-js"></i>Node.js</span>
+                        <span class="skill"><i class="fas fa-crown"></i>Django</span>
+                        <span class="skill"><i class="fab fa-html5"></i>HTML</span>
+                        <span class="skill"><i class="fab fa-css3-alt"></i>CSS</span>
                     </div>
                 </div>
 
                 <div class="skill-group">
                     <div class="skill-group-title">Data & Databases</div>
                     <div class="skill-list">
-                        <span class="skill">Elasticsearch</span>
-                        <span class="skill">PostgreSQL</span>
-                        <span class="skill">Redis</span>
-                        <span class="skill">Neon</span>
+                        <span class="skill"><i class="fas fa-search"></i>Elasticsearch</span>
+                        <span class="skill"><i class="fas fa-database"></i>PostgreSQL</span>
+                        <span class="skill"><i class="fas fa-database"></i>Redis</span>
+                        <span class="skill"><i class="fas fa-database"></i>Neon</span>
                     </div>
                 </div>
 
                 <div class="skill-group">
                     <div class="skill-group-title">AI / ML</div>
                     <div class="skill-list">
-                        <span class="skill">PyTorch</span>
-                        <span class="skill">LangChain</span>
-                        <span class="skill">Generative AI</span>
-                        <span class="skill">RAG</span>
-                        <span class="skill">Vector Databases</span>
+                        <span class="skill"><i class="fas fa-fire"></i>PyTorch</span>
+                        <span class="skill"><i class="fas fa-link"></i>LangChain</span>
+                        <span class="skill"><i class="fas fa-robot"></i>Generative AI</span>
+                        <span class="skill"><i class="fas fa-book"></i>RAG</span>
+                        <span class="skill"><i class="fas fa-database"></i>Vector Databases</span>
                     </div>
                 </div>
 
                 <div class="skill-group">
                     <div class="skill-group-title">Cloud, DevOps & Systems</div>
                     <div class="skill-list">
-                        <span class="skill">AWS</span>
-                        <span class="skill">Docker</span>
-                        <span class="skill">Kubernetes</span>
-                        <span class="skill">Kafka</span>
-                        <span class="skill">CI/CD</span>
-                        <span class="skill">Jenkins</span>
-                        <span class="skill">GitHub Actions</span>
+                        <span class="skill"><i class="fab fa-aws"></i>AWS</span>
+                        <span class="skill"><i class="fab fa-docker"></i>Docker</span>
+                        <span class="skill"><i class="fas fa-ship"></i>Kubernetes</span>
+                        <span class="skill"><i class="fas fa-envelope"></i>Kafka</span>
+                        <span class="skill"><i class="fas fa-sync"></i>CI/CD</span>
+                        <span class="skill"><i class="fas fa-robot"></i>Jenkins</span>
+                        <span class="skill"><i class="fab fa-github"></i>GitHub Actions</span>
                     </div>
                 </div>
 
                 <div class="skill-group">
                     <div class="skill-group-title">Distributed & Realtime Systems</div>
                     <div class="skill-list">
-                        <span class="skill">Yjs</span>
-                        <span class="skill">CRDTs</span>
-                        <span class="skill">Ably</span>
-                        <span class="skill">IndexedDB</span>
-                        <span class="skill">REST APIs</span>
-                        <span class="skill">Distributed State Synchronization</span>
+                        <span class="skill"><i class="fas fa-pen"></i>Yjs</span>
+                        <span class="skill"><i class="fas fa-code-branch"></i>CRDTs</span>
+                        <span class="skill"><i class="fas fa-signal"></i>Ably</span>
+                        <span class="skill"><i class="fas fa-database"></i>IndexedDB</span>
+                        <span class="skill"><i class="fas fa-globe"></i>REST APIs</span>
+                        <span class="skill"><i class="fas fa-sync"></i>Distributed State Synchronization</span>
                     </div>
                 </div>
 
                 <div class="skill-group">
                     <div class="skill-group-title">Core CS</div>
                     <div class="skill-list">
-                        <span class="skill">Data Structures & Algorithms</span>
-                        <span class="skill">Operating Systems</span>
-                        <span class="skill">Database Management Systems</span>
-                        <span class="skill">Object-Oriented Programming</span>
+                        <span class="skill"><i class="fas fa-code"></i>Data Structures & Algorithms</span>
+                        <span class="skill"><i class="fas fa-desktop"></i>Operating Systems</span>
+                        <span class="skill"><i class="fas fa-database"></i>Database Management Systems</span>
+                        <span class="skill"><i class="fas fa-puzzle-piece"></i>Object-Oriented Programming</span>
                     </div>
                 </div>
             </div>
@@ -1087,15 +1138,69 @@
                 <div class="modal-kicker">Certifications</div>
                 <h2>Learning beyond the classroom.</h2>
                 <div class="certificate-list">
-                    <div class="certificate"><strong>Agentic AI Certified Foundations Associate</strong><span>Oracle</span></div>
-                    <div class="certificate"><strong>AI, Justice and Rule of Law</strong><span>University of Oxford</span></div>
-                    <div class="certificate"><strong>Career Edge — Young Professional</strong><span>TATA / TCS iON</span></div>
-                    <div class="certificate"><strong>Cybersecurity Analyst Job Simulation</strong><span>TATA</span></div>
-                    <div class="certificate"><strong>Cyber Job Simulation</strong><span>Deloitte</span></div>
-                    <div class="certificate"><strong>Hyperspectral Data for Land and Coastal Systems</strong><span>NASA</span></div>
-                    <div class="certificate"><strong>Web Development Bootcamp</strong><span>Udemy</span></div>
-                    <div class="certificate"><strong>Introduction to Data Science</strong><span>Cisco</span></div>
-                    <div class="certificate"><strong>Software Engineering Job Simulation</strong><span>Commonwealth Bank</span></div>
+                    <div class="certificate">
+                        <div class="certificate-icon"><i class="fas fa-certificate"></i></div>
+                        <div class="certificate-info">
+                            <strong>Agentic AI Certified Foundations Associate</strong>
+                            <span><i class="fas fa-building"></i>Oracle</span>
+                        </div>
+                    </div>
+                    <div class="certificate">
+                        <div class="certificate-icon"><i class="fas fa-university"></i></div>
+                        <div class="certificate-info">
+                            <strong>AI, Justice and Rule of Law</strong>
+                            <span><i class="fas fa-graduation-cap"></i>University of Oxford</span>
+                        </div>
+                    </div>
+                    <div class="certificate">
+                        <div class="certificate-icon"><i class="fas fa-briefcase"></i></div>
+                        <div class="certificate-info">
+                            <strong>Career Edge — Young Professional</strong>
+                            <span><i class="fas fa-building"></i>TATA / TCS iON</span>
+                        </div>
+                    </div>
+                    <div class="certificate">
+                        <div class="certificate-icon"><i class="fas fa-shield-alt"></i></div>
+                        <div class="certificate-info">
+                            <strong>Cybersecurity Analyst Job Simulation</strong>
+                            <span><i class="fas fa-building"></i>TATA</span>
+                        </div>
+                    </div>
+                    <div class="certificate">
+                        <div class="certificate-icon"><i class="fas fa-shield-halved"></i></div>
+                        <div class="certificate-info">
+                            <strong>Cyber Job Simulation</strong>
+                            <span><i class="fas fa-building"></i>Deloitte</span>
+                        </div>
+                    </div>
+                    <div class="certificate">
+                        <div class="certificate-icon"><i class="fas fa-satellite"></i></div>
+                        <div class="certificate-info">
+                            <strong>Hyperspectral Data for Land and Coastal Systems</strong>
+                            <span><i class="fas fa-rocket"></i>NASA</span>
+                        </div>
+                    </div>
+                    <div class="certificate">
+                        <div class="certificate-icon"><i class="fas fa-laptop-code"></i></div>
+                        <div class="certificate-info">
+                            <strong>Web Development Bootcamp</strong>
+                            <span><i class="fas fa-graduation-cap"></i>Udemy</span>
+                        </div>
+                    </div>
+                    <div class="certificate">
+                        <div class="certificate-icon"><i class="fas fa-chart-bar"></i></div>
+                        <div class="certificate-info">
+                            <strong>Introduction to Data Science</strong>
+                            <span><i class="fas fa-building"></i>Cisco</span>
+                        </div>
+                    </div>
+                    <div class="certificate">
+                        <div class="certificate-icon"><i class="fas fa-code"></i></div>
+                        <div class="certificate-info">
+                            <strong>Software Engineering Job Simulation</strong>
+                            <span><i class="fas fa-building"></i>Commonwealth Bank</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -1442,7 +1547,72 @@
             live: null,
             code: 'https://github.com/Omanshu09/Browser-native-computing',
             note: 'Fully functional codebase available for review. While not currently deployed, the implementation is complete and ready for production.'
+        }, {
+            id: 11,
+            number: '11',
+            title: 'Evidence X — Document-Grounded RAG Workspace',
+            short: 'Upload multiple documents (PDF, DOC, TXT) and ask questions that pull answers from one or many of them. Every answer finds the exact source. 100% in-browser for embedding plus retrieval, with only the final answer synthesis going through a secure server-side proxy. Not a chatbot, a documented grounded research workspace.',
+            tech: ['Python', 'FastAPI', 'React', 'RAG', 'Vector DB', 'LLM', 'Document Processing', 'PDF Parsing',
+                'In-browser Embedding'
+            ],
+            live: null,
+            code: 'https://github.com/Omanshu09/EvidenceXReal',
+            note: 'Fully functional codebase available for review. While not currently deployed, the implementation is complete and ready for production.'
         }];
+
+        // ——— TECH ICON MAP ———
+        const techIconMap = {
+            'Web Search': 'fa-search',
+            'Information Retrieval': 'fa-find',
+            'Evidence Extraction': 'fa-file-alt',
+            'RAG': 'fa-book',
+            'LLM': 'fa-robot',
+            'FastAPI': 'fa-bolt',
+            'React': 'fa-react',
+            'Docker': 'fa-docker',
+            'TypeScript': 'fa-typescript',
+            'Vite': 'fa-bolt',
+            'Node.js': 'fa-node-js',
+            'MySQL': 'fa-database',
+            'CRDT': 'fa-code-branch',
+            'IndexedDB': 'fa-database',
+            'E2B': 'fa-code',
+            'Groq API': 'fa-microchip',
+            'Vercel Serverless': 'fa-cloud',
+            'Custom SVG Canvas': 'fa-paint-brush',
+            'localStorage': 'fa-database',
+            'Infinite Canvas': 'fa-expand',
+            'Custom Geometry': 'fa-cube',
+            'Drag & Drop': 'fa-arrows-alt',
+            'Responsive Design': 'fa-mobile-alt',
+            'Fuzzy Search': 'fa-search',
+            'Auto-tagging': 'fa-tags',
+            'CRUD Operations': 'fa-edit',
+            'HTML': 'fa-html5',
+            'CSS': 'fa-css3-alt',
+            'JavaScript': 'fa-js',
+            'Three.js': 'fa-cube',
+            'WebGL': 'fa-globe',
+            'GLB': 'fa-cube',
+            'GLTF': 'fa-cube',
+            'Python': 'fa-python',
+            'PyTorch': 'fa-fire',
+            'ViT': 'fa-eye',
+            'EfficientNet-B0': 'fa-eye',
+            'Computer Vision': 'fa-eye',
+            'Vector DB': 'fa-database',
+            'Semantic Search': 'fa-search',
+            'Virtual Desktop': 'fa-desktop',
+            'File System': 'fa-folder',
+            'Document Processing': 'fa-file-alt',
+            'PDF Parsing': 'fa-file-pdf',
+            'In-browser Embedding': 'fa-cube'
+        };
+
+        function getTechIcon(tech) {
+            const key = techIconMap[tech] || 'fa-code';
+            return `<i class="fas ${key}"></i>`;
+        }
 
         // ——— RENDER PROJECTS ———
         function renderProjects() {
@@ -1468,13 +1638,15 @@
                     noteHtml = `<div class="project-note">${p.note}</div>`;
                 }
 
+                const techHtml = p.tech.map(t =>
+                    `<span class="tech">${getTechIcon(t)} ${t}</span>`
+                ).join('');
+
                 card.innerHTML = `
                         <div class="project-number">PROJECT ${p.number}</div>
                         <div class="project-title">${p.title}</div>
                         <div class="project-description">${p.short}</div>
-                        <div class="tech-list">
-                            ${p.tech.map(t => `<span class="tech">${t}</span>`).join('')}
-                        </div>
+                        <div class="tech-list">${techHtml}</div>
                         <div class="project-actions">
                             <div class="action-group">${actionsHtml}</div>
                         </div>
