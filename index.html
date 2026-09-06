@@ -7,11 +7,11 @@
     <title>Omanshu Bhatt — AI/ML & Full-Stack Developer</title>
     <link rel="preload" href="./3D.glb" as="fetch" crossorigin="anonymous" />
 
-    <!-- Font Awesome 6 (free) for icons -->
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
     <style>
-        /* ——— GLOBAL RESET ——— */
+       
         * {
             box-sizing: border-box;
         }
@@ -27,7 +27,7 @@
             color: #111111;
         }
 
-        /* ——— APP ——— */
+        
         #app {
             position: relative;
             width: 100%;
@@ -37,7 +37,7 @@
             transition: background 0.5s ease, color 0.5s ease;
         }
 
-        /* ——— 3D CONTAINER ——— */
+       
         #canvas-container {
             position: absolute;
             inset: 0;
@@ -51,7 +51,7 @@
             height: 100%;
         }
 
-        /* ——— LOADING SCREEN ——— */
+      
         #loading-screen {
             position: fixed;
             inset: 0;
@@ -101,7 +101,7 @@
             font-variant-numeric: tabular-nums;
         }
 
-        /* ——— TOP NAV ——— */
+    
         #top-bar {
             position: absolute;
             top: 18px;
@@ -139,7 +139,7 @@
             transform: translateY(-1px);
         }
 
-        /* ——— PLATFORM BAR ——— */
+      
         #platform-wrap {
             position: absolute;
             top: 88px;
@@ -189,7 +189,7 @@
             fill: currentColor;
         }
 
-        /* ——— CONTACT POPOVER ——— */
+              
         #contact-popover {
             position: absolute;
             top: calc(100% + 10px);
@@ -241,7 +241,7 @@
             letter-spacing: 0.05em;
         }
 
-        /* ——— 3D AXIS CONTROLS ——— */
+     
         :root {
             --axis-control-top: 82%;
         }
@@ -331,7 +331,7 @@
             grid-row: 1;
         }
 
-        /* ——— THEME TOGGLE ——— */
+       
         #theme-toggle {
             position: absolute;
             right: 24px;
@@ -368,7 +368,7 @@
             padding-right: 4px;
         }
 
-        /* ——— MUSIC TOGGLE ——— */
+      
         #music-toggle {
             position: absolute;
             left: 24px;
@@ -405,7 +405,7 @@
             padding-right: 4px;
         }
 
-        /* ——— MODAL ——— */
+      
         #modal-layer {
             position: fixed;
             inset: 0;
@@ -474,7 +474,7 @@
             font-size: 15px;
         }
 
-        /* ——— ABOUT ——— */
+    
         .about-layout {
             display: grid;
             grid-template-columns: 180px 1fr;
@@ -500,7 +500,7 @@
             font-size: 14px;
         }
 
-        /* ——— SKILLS ——— */
+       
         .skill-group {
             margin-bottom: 24px;
         }
@@ -534,7 +534,7 @@
             color: #444;
         }
 
-        /* ——— PROJECTS ——— */
+      
         .project-list {
             display: grid;
             gap: 14px;
@@ -638,7 +638,7 @@
             padding-top: 10px;
         }
 
-        /* ——— CERTIFICATIONS ——— */
+       
         .certificate-list {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -677,7 +677,7 @@
             color: #888;
         }
 
-        /* ——— NIGHT MODE ——— */
+      
         body.night,
         body.night #app {
             background: #000000;
@@ -816,7 +816,7 @@
             color: #888888;
         }
 
-        /* ——— MOBILE ——— */
+       
         @media (max-width: 768px) {
             #top-bar {
                 top: 10px;
@@ -921,7 +921,7 @@
 
 <body>
 
-    <!-- ——— LOADING SCREEN ——— -->
+   
     <div id="loading-screen">
         <div class="loading-title">Loading experience</div>
         <div class="loading-subtitle">Preparing the 3D environment…</div>
@@ -944,7 +944,7 @@
             <button onclick="openModal('certifications')">Certifications</button>
         </nav>
 
-        <!-- PLATFORM BAR -->
+       
         <div id="platform-wrap">
             <div id="platform-bar">
 
@@ -991,7 +991,7 @@
             </div>
         </div>
 
-        <!-- 3D AXIS CONTROLS -->
+      
         <div id="axis-control-wrap">
             <div id="axis-control">
                 <button class="axis-button axis-y-positive" onclick="rotateModel('yPositive')" aria-label="Up" title="Up">↑</button>
@@ -1001,14 +1001,14 @@
             </div>
         </div>
 
-        <!-- MUSIC -->
+     
         <div id="music-toggle">
             <button id="music-button" onclick="toggleMusic()" title="Play music">▶</button>
             <span id="music-label">Music</span>
         </div>
         <audio id="background-music" src="music.mp4" preload="auto" loop></audio>
 
-        <!-- DAY / NIGHT -->
+      
         <div id="theme-toggle">
             <button onclick="setTheme('day')" title="Day mode">☀</button>
             <span id="theme-label">Day</span>
@@ -1017,12 +1017,12 @@
 
     </div>
 
-    <!-- ——— MODAL SYSTEM ——— -->
+
     <div id="modal-layer">
         <div class="modal">
             <button class="modal-close" onclick="closeModal()">×</button>
 
-            <!-- ABOUT -->
+           
             <div id="modal-about" class="modal-content">
                 <div class="modal-kicker">About Me</div>
                 <h2>Building intelligent systems that actually work.</h2>
@@ -1038,7 +1038,7 @@
                 </div>
             </div>
 
-            <!-- SKILLS -->
+       
             <div id="modal-skills" class="modal-content" style="display:none;">
                 <div class="modal-kicker">Technical Skills</div>
                 <h2>What I work with</h2>
@@ -1124,16 +1124,16 @@
                 </div>
             </div>
 
-            <!-- PROJECTS -->
+         
             <div id="modal-projects" class="modal-content" style="display:none;">
                 <div class="modal-kicker">Projects & Engineering Work</div>
                 <h2>Systems I've built</h2>
                 <div class="project-list" id="project-list-container">
-                    <!-- projects injected by JS -->
+                
                 </div>
             </div>
 
-            <!-- CERTIFICATIONS -->
+         
             <div id="modal-certifications" class="modal-content" style="display:none;">
                 <div class="modal-kicker">Certifications</div>
                 <h2>Learning beyond the classroom.</h2>
@@ -1207,7 +1207,7 @@
         </div>
     </div>
 
-    <!-- ——— THREE.JS ——— -->
+
     <script type="importmap">
         {
             "imports": {
@@ -1223,7 +1223,7 @@
         import { DRACOLoader } from 'https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/loaders/DRACOLoader.js';
         import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/controls/OrbitControls.js';
 
-        // ——— LOADING UI ———
+        
         const loadingScreen = document.getElementById('loading-screen');
         const loadingProgress = document.getElementById('loading-progress');
         const loadingPercent = document.getElementById('loading-percent');
@@ -1241,15 +1241,15 @@
             }, 300);
         }
 
-        // ——— SCENE ———
+        
         const scene = new THREE.Scene();
         scene.background = new THREE.Color(0xffffff);
 
-        // ——— CAMERA ———
+       
         const camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.1, 2000);
         camera.position.set(5, 2, 8);
 
-        // ——— RENDERER ———
+       
         const renderer = new THREE.WebGLRenderer({
             antialias: true,
             alpha: false,
@@ -1263,7 +1263,7 @@
         renderer.setClearColor(0xffffff, 1);
         document.getElementById('canvas-container').appendChild(renderer.domElement);
 
-        // ——— LIGHTING ———
+       
         const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x555555, 2.5);
         scene.add(hemisphereLight);
         const directionalLight = new THREE.DirectionalLight(0xffffff, 3);
@@ -1273,14 +1273,14 @@
         secondDirectionalLight.position.set(-5, 5, -5);
         scene.add(secondDirectionalLight);
 
-        // ——— CONTROLS ——— disabled for mouse
+       
         const controls = new OrbitControls(camera, renderer.domElement);
         controls.enableRotate = false;
         controls.enableZoom = false;
         controls.enablePan = false;
         controls.enableDamping = false;
 
-        // ——— MODEL STATE ———
+       
         let pivot = null;
         let model = null;
         let mixer = null;
@@ -1292,14 +1292,14 @@
         const ROTATION_STEP = THREE.MathUtils.degToRad(12);
         const MODEL_VERTICAL_OFFSET = -0.50;
 
-        // ——— DRACO + GLTF LOADER ———
+       
         const dracoLoader = new DRACOLoader();
         dracoLoader.setDecoderPath('https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/libs/draco/');
 
         const loader = new GLTFLoader();
         loader.setDRACOLoader(dracoLoader);
 
-        // ——— LOAD 3D.GLB ———
+       
         loader.load(
             './3D.glb',
             function(gltf) {
@@ -1378,7 +1378,7 @@
             }
         );
 
-        // ——— RESPONSIVE ———
+       
         function updateCamera() {
             const isMobile = window.innerWidth <= 768;
             camera.fov = isMobile ? 58 : 40;
@@ -1388,7 +1388,7 @@
         updateCamera();
         window.addEventListener('resize', updateCamera);
 
-        // ——— ROTATION ———
+        
         window.rotateModel = function(direction) {
             if (!pivot) return;
             if (direction === 'xPositive') {
@@ -1408,7 +1408,7 @@
             targetRotationY = originalRotationY;
         };
 
-        // ——— ANIMATION ———
+       
         const clock = new THREE.Clock();
 
         function animate() {
@@ -1430,7 +1430,7 @@
         }
         animate();
 
-        // ——— THEME SYNC ———
+      
         const origSetTheme = window.setTheme;
         window.setTheme = function(theme) {
             if (origSetTheme) origSetTheme(theme);
@@ -1453,9 +1453,9 @@
         }, 100);
     </script>
 
-    <!-- ——— UI JAVASCRIPT ——— -->
+   
     <script>
-        // ——— PROJECT DATA ———
+    
         const projects = [{
             id: 1,
             number: '01',
@@ -1571,7 +1571,7 @@
             note: 'Fully functional codebase available for review. While not currently deployed, the implementation is complete and ready for production.'
         }];
 
-        // ——— TECH ICON MAP ———
+       
         const techIconMap = {
             'Web Search': 'fa-search',
             'Information Retrieval': 'fa-find',
@@ -1633,7 +1633,7 @@
             return `<i class="fas ${key}"></i>`;
         }
 
-        // ——— RENDER PROJECTS ———
+     
         function renderProjects() {
             const container = document.getElementById('project-list-container');
             if (!container) return;
@@ -1675,7 +1675,7 @@
             });
         }
 
-        // ——— MODALS ———
+       
         function openModal(section) {
             const layer = document.getElementById('modal-layer');
             const contents = document.querySelectorAll('.modal-content');
@@ -1701,7 +1701,7 @@
             if (event.target === this) closeModal();
         });
 
-        // ——— CONTACT ———
+       
         function toggleContact(event) {
             event.stopPropagation();
             const popover = document.getElementById('contact-popover');
@@ -1720,7 +1720,7 @@
             closeContact();
         });
 
-        // ——— ESC ———
+    
         document.addEventListener('keydown', function(event) {
             if (event.key === 'Escape') {
                 closeModal();
@@ -1728,7 +1728,7 @@
             }
         });
 
-        // ——— DAY / NIGHT ———
+       
         function setTheme(theme) {
             const label = document.getElementById('theme-label');
             if (theme === 'night') {
@@ -1743,7 +1743,7 @@
         window._setTheme3D = function(theme) {};
         setTheme('day');
 
-        // ——— MUSIC ———
+      
         const music = document.getElementById('background-music');
         const musicButton = document.getElementById('music-button');
         const musicLabel = document.getElementById('music-label');
@@ -1794,7 +1794,7 @@
             });
         }
 
-        // ——— INIT ———
+      
         document.addEventListener('DOMContentLoaded', function() {
             renderProjects();
         });
