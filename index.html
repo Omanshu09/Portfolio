@@ -999,4 +999,823 @@
                 <button class="axis-reset" onclick="resetModelRotation()" aria-label="Reset 3D view" title="Reset 3D view">·</button>
                 <button class="axis-button axis-x-positive" onclick="rotateModel('xPositive')" aria-label="Rotate right" title="Rotate right">→</button>
             </div>
-        </
+        </div>
+
+     
+        <div id="music-toggle">
+            <button id="music-button" onclick="toggleMusic()" title="Play music">▶</button>
+            <span id="music-label">Music</span>
+        </div>
+        <audio id="background-music" src="music.mp4" preload="auto" loop></audio>
+
+      
+        <div id="theme-toggle">
+            <button onclick="setTheme('day')" title="Day mode">☀</button>
+            <span id="theme-label">Day</span>
+            <button onclick="setTheme('night')" title="Night mode">☾</button>
+        </div>
+
+    </div>
+
+
+    <div id="modal-layer">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal()">×</button>
+
+           
+            <div id="modal-about" class="modal-content">
+                <div class="modal-kicker">About Me</div>
+                <h2>Building intelligent systems that actually work.</h2>
+                <div class="about-layout">
+                    <img src="About Me photo.jpg" alt="Omanshu Bhatt" class="about-photo">
+                    <div>
+                        <div class="about-name">Omanshu Bhatt</div>
+                        <div class="about-role">AI/ML & Full-Stack Developer</div>
+                        <p>I'm an AI/ML and Full-Stack Developer focused on building production-grade AI and distributed systems. I work across the complete engineering stack, from retrieval and reasoning pipelines to low-latency APIs and real-time collaborative applications.</p>
+                        <p>My work includes systems for web research, evidence retrieval, real-time collaboration, code intelligence and machine learning, with an emphasis on reliability, practical architecture and deployable software.</p>
+                        <p>I enjoy turning technically complex ideas into products that are understandable, useful and built to work outside of a demo environment.</p>
+                    </div>
+                </div>
+            </div>
+
+       
+            <div id="modal-skills" class="modal-content" style="display:none;">
+                <div class="modal-kicker">Technical Skills</div>
+                <h2>What I work with</h2>
+
+                <div class="skill-group">
+                    <div class="skill-group-title">Languages</div>
+                    <div class="skill-list">
+                        <span class="skill"><i class="fab fa-python"></i>Python</span>
+                        <span class="skill"><i class="fab fa-golang"></i>Go</span>
+                        <span class="skill"><i class="fab fa-java"></i>Java</span>
+                        <span class="skill"><i class="fab fa-js"></i>JavaScript</span>
+                        <span class="skill"><i class="fas fa-code"></i>C</span>
+                        <span class="skill"><i class="fab fa-typescript"></i>TypeScript</span>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <div class="skill-group-title">Web & Frameworks</div>
+                    <div class="skill-list">
+                        <span class="skill"><i class="fab fa-react"></i>React.js</span>
+                        <span class="skill"><i class="fas fa-bolt"></i>FastAPI</span>
+                        <span class="skill"><i class="fab fa-node-js"></i>Node.js</span>
+                        <span class="skill"><i class="fas fa-crown"></i>Django</span>
+                        <span class="skill"><i class="fab fa-html5"></i>HTML</span>
+                        <span class="skill"><i class="fab fa-css3-alt"></i>CSS</span>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <div class="skill-group-title">Data & Databases</div>
+                    <div class="skill-list">
+                        <span class="skill"><i class="fas fa-search"></i>Elasticsearch</span>
+                        <span class="skill"><i class="fas fa-database"></i>PostgreSQL</span>
+                        <span class="skill"><i class="fas fa-database"></i>Redis</span>
+                        <span class="skill"><i class="fas fa-database"></i>Neon</span>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <div class="skill-group-title">AI / ML</div>
+                    <div class="skill-list">
+                        <span class="skill"><i class="fas fa-fire"></i>PyTorch</span>
+                        <span class="skill"><i class="fas fa-link"></i>LangChain</span>
+                        <span class="skill"><i class="fas fa-robot"></i>Generative AI</span>
+                        <span class="skill"><i class="fas fa-book"></i>RAG</span>
+                        <span class="skill"><i class="fas fa-database"></i>Vector Databases</span>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <div class="skill-group-title">Cloud, DevOps & Systems</div>
+                    <div class="skill-list">
+                        <span class="skill"><i class="fab fa-aws"></i>AWS</span>
+                        <span class="skill"><i class="fab fa-docker"></i>Docker</span>
+                        <span class="skill"><i class="fas fa-ship"></i>Kubernetes</span>
+                        <span class="skill"><i class="fas fa-envelope"></i>Kafka</span>
+                        <span class="skill"><i class="fas fa-sync"></i>CI/CD</span>
+                        <span class="skill"><i class="fas fa-robot"></i>Jenkins</span>
+                        <span class="skill"><i class="fab fa-github"></i>GitHub Actions</span>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <div class="skill-group-title">Distributed & Realtime Systems</div>
+                    <div class="skill-list">
+                        <span class="skill"><i class="fas fa-pen"></i>Yjs</span>
+                        <span class="skill"><i class="fas fa-code-branch"></i>CRDTs</span>
+                        <span class="skill"><i class="fas fa-signal"></i>Ably</span>
+                        <span class="skill"><i class="fas fa-database"></i>IndexedDB</span>
+                        <span class="skill"><i class="fas fa-globe"></i>REST APIs</span>
+                        <span class="skill"><i class="fas fa-sync"></i>Distributed State Synchronization</span>
+                    </div>
+                </div>
+
+                <div class="skill-group">
+                    <div class="skill-group-title">Core CS</div>
+                    <div class="skill-list">
+                        <span class="skill"><i class="fas fa-code"></i>Data Structures & Algorithms</span>
+                        <span class="skill"><i class="fas fa-desktop"></i>Operating Systems</span>
+                        <span class="skill"><i class="fas fa-database"></i>Database Management Systems</span>
+                        <span class="skill"><i class="fas fa-puzzle-piece"></i>Object-Oriented Programming</span>
+                    </div>
+                </div>
+            </div>
+
+         
+            <div id="modal-projects" class="modal-content" style="display:none;">
+                <div class="modal-kicker">Projects & Engineering Work</div>
+                <h2>Systems I've built</h2>
+                <div class="project-list" id="project-list-container">
+                
+                </div>
+            </div>
+
+         
+            <div id="modal-certifications" class="modal-content" style="display:none;">
+                <div class="modal-kicker">Certifications</div>
+                <h2>Learning beyond the classroom.</h2>
+                <div class="certificate-list">
+                    <div class="certificate">
+                        <div class="certificate-icon"><i class="fas fa-certificate"></i></div>
+                        <div class="certificate-info">
+                            <strong>Agentic AI Certified Foundations Associate</strong>
+                            <span><i class="fas fa-building"></i>Oracle</span>
+                        </div>
+                    </div>
+                    <div class="certificate">
+                        <div class="certificate-icon"><i class="fas fa-university"></i></div>
+                        <div class="certificate-info">
+                            <strong>AI, Justice and Rule of Law</strong>
+                            <span><i class="fas fa-graduation-cap"></i>University of Oxford</span>
+                        </div>
+                    </div>
+                    <div class="certificate">
+                        <div class="certificate-icon"><i class="fas fa-briefcase"></i></div>
+                        <div class="certificate-info">
+                            <strong>Career Edge — Young Professional</strong>
+                            <span><i class="fas fa-building"></i>TATA / TCS iON</span>
+                        </div>
+                    </div>
+                    <div class="certificate">
+                        <div class="certificate-icon"><i class="fas fa-shield-alt"></i></div>
+                        <div class="certificate-info">
+                            <strong>Cybersecurity Analyst Job Simulation</strong>
+                            <span><i class="fas fa-building"></i>TATA</span>
+                        </div>
+                    </div>
+                    <div class="certificate">
+                        <div class="certificate-icon"><i class="fas fa-shield-halved"></i></div>
+                        <div class="certificate-info">
+                            <strong>Cyber Job Simulation</strong>
+                            <span><i class="fas fa-building"></i>Deloitte</span>
+                        </div>
+                    </div>
+                    <div class="certificate">
+                        <div class="certificate-icon"><i class="fas fa-satellite"></i></div>
+                        <div class="certificate-info">
+                            <strong>Hyperspectral Data for Land and Coastal Systems</strong>
+                            <span><i class="fas fa-rocket"></i>NASA</span>
+                        </div>
+                    </div>
+                    <div class="certificate">
+                        <div class="certificate-icon"><i class="fas fa-laptop-code"></i></div>
+                        <div class="certificate-info">
+                            <strong>Web Development Bootcamp</strong>
+                            <span><i class="fas fa-graduation-cap"></i>Udemy</span>
+                        </div>
+                    </div>
+                    <div class="certificate">
+                        <div class="certificate-icon"><i class="fas fa-chart-bar"></i></div>
+                        <div class="certificate-info">
+                            <strong>Introduction to Data Science</strong>
+                            <span><i class="fas fa-building"></i>Cisco</span>
+                        </div>
+                    </div>
+                    <div class="certificate">
+                        <div class="certificate-icon"><i class="fas fa-code"></i></div>
+                        <div class="certificate-info">
+                            <strong>Software Engineering Job Simulation</strong>
+                            <span><i class="fas fa-building"></i>Commonwealth Bank</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+                "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+            }
+        }
+    </script>
+
+    <script type="module">
+        import * as THREE from 'three';
+        import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/loaders/GLTFLoader.js';
+        import { DRACOLoader } from 'https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/loaders/DRACOLoader.js';
+        import { OrbitControls } from 'https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/controls/OrbitControls.js';
+
+        
+        const loadingScreen = document.getElementById('loading-screen');
+        const loadingProgress = document.getElementById('loading-progress');
+        const loadingPercent = document.getElementById('loading-percent');
+
+        function updateLoadingProgress(value) {
+            const percent = Math.max(0, Math.min(100, Math.round(value)));
+            if (loadingProgress) loadingProgress.style.width = percent + '%';
+            if (loadingPercent) loadingPercent.textContent = percent + '%';
+        }
+
+        function finishLoading() {
+            updateLoadingProgress(100);
+            setTimeout(() => {
+                if (loadingScreen) loadingScreen.classList.add('hidden');
+            }, 300);
+        }
+
+        
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0xffffff);
+
+       
+        const camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 0.1, 2000);
+        camera.position.set(5, 2, 8);
+
+       
+        const renderer = new THREE.WebGLRenderer({
+            antialias: true,
+            alpha: false,
+            powerPreference: 'high-performance'
+        });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+        renderer.outputColorSpace = THREE.SRGBColorSpace;
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.0;
+        renderer.setClearColor(0xffffff, 1);
+        document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+       
+        const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x555555, 2.5);
+        scene.add(hemisphereLight);
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 3);
+        directionalLight.position.set(5, 10, 5);
+        scene.add(directionalLight);
+        const secondDirectionalLight = new THREE.DirectionalLight(0xffffff, 1.5);
+        secondDirectionalLight.position.set(-5, 5, -5);
+        scene.add(secondDirectionalLight);
+
+       
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableRotate = false;
+        controls.enableZoom = false;
+        controls.enablePan = false;
+        controls.enableDamping = false;
+
+       
+        let pivot = null;
+        let model = null;
+        let mixer = null;
+        let targetRotationX = 0;
+        let targetRotationY = 0;
+        let originalRotationX = 0;
+        let originalRotationY = 0;
+
+        const ROTATION_STEP = THREE.MathUtils.degToRad(12);
+        const MODEL_VERTICAL_OFFSET = -0.50;
+
+       
+        const dracoLoader = new DRACOLoader();
+        dracoLoader.setDecoderPath('https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/libs/draco/');
+
+        const loader = new GLTFLoader();
+        loader.setDRACOLoader(dracoLoader);
+
+       
+        loader.load(
+            './3D.glb',
+            function(gltf) {
+                console.log('3D.glb loaded successfully.');
+
+                pivot = new THREE.Group();
+                scene.add(pivot);
+
+                model = gltf.scene;
+                pivot.add(model);
+
+                if (gltf.animations && gltf.animations.length > 0) {
+                    mixer = new THREE.AnimationMixer(model);
+                    gltf.animations.forEach(function(clip) {
+                        const action = mixer.clipAction(clip);
+                        action.play();
+                    });
+                }
+
+                const box = new THREE.Box3().setFromObject(model);
+                const center = box.getCenter(new THREE.Vector3());
+                const size = box.getSize(new THREE.Vector3());
+                model.position.sub(center);
+
+                const maxDimension = Math.max(size.x, size.y, size.z);
+                if (maxDimension > 0) {
+                    const desiredDimension = 4.75;
+                    const normalizedScale = desiredDimension / maxDimension;
+                    model.scale.setScalar(normalizedScale);
+                }
+
+                const scaledBox = new THREE.Box3().setFromObject(model);
+                const scaledCenter = scaledBox.getCenter(new THREE.Vector3());
+                model.position.sub(scaledCenter);
+
+                const groundBox = new THREE.Box3().setFromObject(model);
+                const bottomY = groundBox.min.y;
+                pivot.position.y = -bottomY + MODEL_VERTICAL_OFFSET;
+                pivot.position.x = 0.2;
+                pivot.position.z = 0;
+
+                originalRotationX = pivot.rotation.x;
+                originalRotationY = pivot.rotation.y;
+                targetRotationX = originalRotationX;
+                targetRotationY = originalRotationY;
+
+                camera.position.set(5, 2, 8);
+                camera.lookAt(0, 1.5, 0);
+                controls.target.set(0, 1.5, 0);
+                controls.update();
+
+                if (document.body.classList.contains('night')) {
+                    scene.background = new THREE.Color(0x000000);
+                    renderer.setClearColor(0x000000, 1);
+                }
+
+                finishLoading();
+            },
+            function(xhr) {
+                if (xhr.lengthComputable) {
+                    const progress = (xhr.loaded / xhr.total) * 100;
+                    updateLoadingProgress(progress);
+                } else {
+                    updateLoadingProgress(50);
+                }
+            },
+            function(error) {
+                console.error('3D.GLB loading error:', error);
+                if (loadingScreen) {
+                    loadingScreen.querySelector('.loading-title').textContent = 'Unable to load 3D environment';
+                    loadingScreen.querySelector('.loading-subtitle').textContent =
+                        'GLB loading failed. Check the browser console.';
+                    updateLoadingProgress(0);
+                    if (loadingPercent) loadingPercent.textContent = 'ERROR';
+                }
+            }
+        );
+
+       
+        function updateCamera() {
+            const isMobile = window.innerWidth <= 768;
+            camera.fov = isMobile ? 58 : 40;
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+        }
+        updateCamera();
+        window.addEventListener('resize', updateCamera);
+
+        
+        window.rotateModel = function(direction) {
+            if (!pivot) return;
+            if (direction === 'xPositive') {
+                targetRotationY -= ROTATION_STEP;
+            }
+            if (direction === 'xNegative') {
+                targetRotationY += ROTATION_STEP;
+            }
+            if (direction === 'yPositive') {
+                targetRotationX += ROTATION_STEP;
+            }
+        };
+
+        window.resetModelRotation = function() {
+            if (!pivot) return;
+            targetRotationX = originalRotationX;
+            targetRotationY = originalRotationY;
+        };
+
+       
+        const clock = new THREE.Clock();
+
+        function animate() {
+            requestAnimationFrame(animate);
+            const delta = clock.getDelta();
+
+            if (mixer) mixer.update(delta);
+
+            camera.position.set(5, 2, 8);
+            camera.lookAt(0, 1.5, 0);
+            controls.update();
+
+            if (pivot) {
+                pivot.rotation.x = THREE.MathUtils.lerp(pivot.rotation.x, targetRotationX, 0.08);
+                pivot.rotation.y = THREE.MathUtils.lerp(pivot.rotation.y, targetRotationY, 0.08);
+            }
+
+            renderer.render(scene, camera);
+        }
+        animate();
+
+      
+        const origSetTheme = window.setTheme;
+        window.setTheme = function(theme) {
+            if (origSetTheme) origSetTheme(theme);
+            if (theme === 'night') {
+                scene.background = new THREE.Color(0x000000);
+                renderer.setClearColor(0x000000, 1);
+            } else {
+                scene.background = new THREE.Color(0xffffff);
+                renderer.setClearColor(0xffffff, 1);
+            }
+        };
+        setTimeout(() => {
+            if (document.body.classList.contains('night')) {
+                scene.background = new THREE.Color(0x000000);
+                renderer.setClearColor(0x000000, 1);
+            } else {
+                scene.background = new THREE.Color(0xffffff);
+                renderer.setClearColor(0xffffff, 1);
+            }
+        }, 100);
+    </script>
+
+   
+    <script>
+    
+        const projects = [{
+            id: 1,
+            number: '01',
+            title: 'ATLAS — Web Research & Evidence Engine',
+            short: 'A research-driven web evidence engine that performs query processing, multi-source web retrieval, content extraction, relevance filtering and ranking before synthesizing structured, source-backed responses.',
+            tech: ['Web Search', 'Information Retrieval', 'Evidence Extraction', 'RAG', 'LLM', 'FastAPI', 'React',
+                'Docker'
+            ],
+            live: 'https://search-engine-frontend-xi.vercel.app/',
+            code: 'https://github.com/Omanshu09/Search-Engine'
+        }, {
+            id: 2,
+            number: '02',
+            title: 'NEXUS — Real-Time Collaborative Engineering Workspace',
+            short: 'A real-time collaborative engineering workspace enabling multiple users to edit a shared CRDT-based notepad with near-instant synchronization, offline persistence, automatic recovery and isolated Python execution.',
+            tech: ['React', 'TypeScript', 'Vite', 'Node.js', 'MySQL', 'CRDT', 'IndexedDB', 'E2B'],
+            live: 'https://nexus-deployment-frontend.vercel.app/',
+            code: 'https://github.com/Omanshu09/Nexus-deployment'
+        }, {
+            id: 3,
+            number: '03',
+            title: 'FluoCall — Real-Time Translated Video Calling',
+            short: 'A peer-to-peer video calling app where each participant speaks their own language and sees and hears the other in theirs. Whisper speech recognition and NLLB-200 translation run entirely on-device via WebGPU with a WASM fallback — no backend, no API keys, no signup — with translated captions and optional dubbed audio flowing over a WebRTC data channel.',
+            tech: ['React', 'TypeScript', 'Vite', 'WebRTC', 'Web Workers', 'Whisper STT', 'NLLB-200', 'WebGPU',
+                'Web Speech API', 'Vercel'
+            ],
+            live: 'https://fluo-call.vercel.app/',
+            code: 'https://github.com/Omanshu09/Fluo-Call',
+        }, {
+            id: 4,
+            number: '04',
+            title: 'Second Brain — Visual Knowledge Graph for Ideas',
+            short: 'A visual knowledge graph that transforms rough ideas into an interactive map of concepts. Type a project idea, and AI extracts topics, links them, and lets you explore them on a custom SVG canvas with pan, zoom, and drag.',
+            tech: ['React', 'TypeScript', 'Vite', 'Groq API', 'Vercel Serverless', 'Custom SVG Canvas',
+                'localStorage'
+            ],
+            live: 'https://second-brain-omanshu.vercel.app/',
+            code: 'https://github.com/Omanshu09/SecondBrain'
+        }, {
+            id: 5,
+            number: '05',
+            title: 'FORGE — Software Engineering Intelligence Platform',
+            short: 'A browser based engineering intelligence platform that ingests GitHub repositories, performs browser side static analysis using Web Workers and extracts languages, imports, exports, symbols, dependencies, entry points, complexity signals and module relationships. The resulting intelligence powers an interactive dependency graph, repository explorer, architecture analysis and Impact Simulator.',
+            tech: ['TypeScript', 'React', 'Vite', 'Web Workers', 'Vercel Serverless Functions',
+                'Static Code Analysis', 'Graph Visualization', 'LLM Integration', 'Structured AI/JSON',
+                'REST APIs', 'Git'
+            ],
+            live: 'https://forge-omanshu.vercel.app/',
+            code: 'https://github.com/Omanshu09/FORGE'
+        }, {
+            id: 6,
+            number: '06',
+            title: 'Mosaic — Personal Visual Workspace',
+            short: 'A free-form infinite canvas where you can drop notes, links, images, code snippets, color swatches, checklists and bookmarks — arranged spatially, panned and zoomed at will. Everything stays in your browser via localStorage.',
+            tech: ['React', 'TypeScript', 'Vite', 'Infinite Canvas', 'localStorage', 'Custom Geometry',
+                'Drag & Drop', 'Responsive Design'
+            ],
+            live: 'https://mosaic-ebon-pi.vercel.app/',
+            code: 'https://github.com/Omanshu09/Mosaic'
+        }, {
+            id: 7,
+            number: '07',
+            title: 'TabStash — Inbox Zero for Your Open Tabs',
+            short: 'A "save for later" app that lets you capture links, auto-tag them, organize into collections, mark read/unread, snooze, and search instantly — all in your browser with zero server dependencies.',
+            tech: ['React', 'TypeScript', 'Vite', 'localStorage', 'Fuzzy Search', 'Auto-tagging',
+                'CRUD Operations'
+            ],
+            live: 'https://tabstash-gamma.vercel.app/',
+            code: 'https://github.com/Omanshu09/tabstash'
+        }, {
+            id: 8,
+            number: '08',
+            title: '3D Developer Portfolio',
+            short: 'A browser-based developer portfolio built around an immersive 3D environment, combining a WebGL-rendered scene with responsive portfolio interfaces, project showcases, profile links, theme controls and ambient audio.',
+            tech: ['HTML', 'CSS', 'JavaScript', 'Three.js', 'WebGL', 'GLB', 'GLTF'],
+            live: 'https://omanshu-bhatt-portfolio.vercel.app/',
+            code: 'https://github.com/Omanshu09/Portfolio'
+        }, {
+            id: 9,
+            number: '09',
+            title: 'Omanshu Bhatt — Interactive Personal Website',
+            short: 'An interactive personal website combining a blog, Ask Me AI, an infinite running game, a globe, feedback tools, animated ring and spiral image layouts, portfolio access and a dynamic particle-driven visual background.',
+            tech: ['HTML', 'CSS', 'JavaScript'],
+            live: 'https://omanshu09.github.io/omanshu-repository/index.html',
+            code: 'https://github.com/Omanshu09/omanshu-repository'
+        }, {
+            id: 10,
+            number: '10',
+            title: 'Deepfake Image Integrity System',
+            short: 'A cross-platform AI-generated image detection system using an ensemble of Vision Transformer and EfficientNet-B0 models, packaged with a unified inference pipeline for practical image verification.',
+            tech: ['Python', 'PyTorch', 'ViT', 'EfficientNet-B0', 'FastAPI', 'Docker', 'Computer Vision'],
+            live: null,
+            code: 'https://github.com/Omanshu09/Deepfake-image-integrity-system',
+            note: 'Fully functional codebase available for review. While not currently deployed, the implementation is complete and ready for production.'
+        }, {
+            id: 11,
+            number: '11',
+            title: 'AI Codebase Intelligence Platform',
+            short: 'A semantic search platform for codebases using RAG and vector embeddings to help developers navigate unfamiliar repositories through natural-language questions and context-aware code retrieval.',
+            tech: ['Python', 'FastAPI', 'React', 'RAG', 'Vector DB', 'Docker', 'Semantic Search'],
+            live: null,
+            code: 'https://github.com/Omanshu09/AI-codebase-intlligence',
+            note: 'Fully functional codebase available for review. While not currently deployed, the implementation is complete and ready for production.'
+        }, {
+            id: 12,
+            number: '12',
+            title: 'Browser-native-computing',
+            short: 'An experimental browser-native computing environment designed to bring desktop-like applications and local computing workflows into the browser, with a functional UI foundation and basic file/notes interaction.',
+            tech: ['JavaScript', 'HTML', 'CSS', 'localStorage', 'Virtual Desktop', 'File System'],
+            live: null,
+            code: 'https://github.com/Omanshu09/Browser-native-computing',
+            note: 'Fully functional codebase available for review. While not currently deployed, the implementation is complete and ready for production.'
+        }, {
+            id: 13,
+            number: '13',
+            title: 'Evidence X — Document-Grounded RAG Workspace',
+            short: 'Upload multiple documents (PDF, DOC, TXT) and ask questions that pull answers from one or many of them. Every answer finds the exact source. 100% in-browser for embedding plus retrieval, with only the final answer synthesis going through a secure server-side proxy. Not a chatbot, a documented grounded research workspace.',
+            tech: ['Python', 'FastAPI', 'React', 'RAG', 'Vector DB', 'LLM', 'Document Processing', 'PDF Parsing',
+                'In-browser Embedding'
+            ],
+            live: null,
+            code: 'https://github.com/Omanshu09/EvidenceX',
+            note: 'Fully functional codebase available for review. While not currently deployed, the implementation is complete and ready for production.'
+        }];
+
+       
+        const techIconMap = {
+            'Web Search': 'fa-search',
+            'Information Retrieval': 'fa-find',
+            'Evidence Extraction': 'fa-file-alt',
+            'RAG': 'fa-book',
+            'LLM': 'fa-robot',
+            'FastAPI': 'fa-bolt',
+            'React': 'fa-react',
+            'Docker': 'fa-docker',
+            'TypeScript': 'fa-typescript',
+            'Vite': 'fa-bolt',
+            'Node.js': 'fa-node-js',
+            'MySQL': 'fa-database',
+            'CRDT': 'fa-code-branch',
+            'IndexedDB': 'fa-database',
+            'E2B': 'fa-code',
+            'Groq API': 'fa-microchip',
+            'Vercel Serverless': 'fa-cloud',
+            'Vercel Serverless Functions': 'fa-cloud',
+            'Custom SVG Canvas': 'fa-paint-brush',
+            'localStorage': 'fa-database',
+            'Infinite Canvas': 'fa-expand',
+            'Custom Geometry': 'fa-cube',
+            'Drag & Drop': 'fa-arrows-alt',
+            'Responsive Design': 'fa-mobile-alt',
+            'Fuzzy Search': 'fa-search',
+            'Auto-tagging': 'fa-tags',
+            'CRUD Operations': 'fa-edit',
+            'HTML': 'fa-html5',
+            'CSS': 'fa-css3-alt',
+            'JavaScript': 'fa-js',
+            'Three.js': 'fa-cube',
+            'WebGL': 'fa-globe',
+            'GLB': 'fa-cube',
+            'GLTF': 'fa-cube',
+            'Python': 'fa-python',
+            'PyTorch': 'fa-fire',
+            'ViT': 'fa-eye',
+            'EfficientNet-B0': 'fa-eye',
+            'Computer Vision': 'fa-eye',
+            'Vector DB': 'fa-database',
+            'Semantic Search': 'fa-search',
+            'Virtual Desktop': 'fa-desktop',
+            'File System': 'fa-folder',
+            'Document Processing': 'fa-file-alt',
+            'PDF Parsing': 'fa-file-pdf',
+            'In-browser Embedding': 'fa-cube',
+            'Web Workers': 'fa-cogs',
+            'Static Code Analysis': 'fa-code',
+            'Graph Visualization': 'fa-project-diagram',
+            'LLM Integration': 'fa-robot',
+            'Structured AI/JSON': 'fa-code',
+            'REST APIs': 'fa-plug',
+            'Git': 'fa-git-alt',
+            'WebRTC': 'fa-video',
+            'Whisper STT': 'fa-microphone',
+            'NLLB-200': 'fa-language',
+            'WebGPU': 'fa-microchip',
+            'Web Speech API': 'fa-volume-high',
+            'Vercel': 'fa-cloud'
+        };
+
+        function getTechIcon(tech) {
+            const key = techIconMap[tech] || 'fa-code';
+            return `<i class="fas ${key}"></i>`;
+        }
+
+     
+        function renderProjects() {
+            const container = document.getElementById('project-list-container');
+            if (!container) return;
+            container.innerHTML = '';
+            projects.forEach(function(p) {
+                const card = document.createElement('div');
+                card.className = 'project-card';
+
+                let actionsHtml = '';
+                if (p.live) {
+                    actionsHtml +=
+                        `<a class="project-link" href="${p.live}" target="_blank" rel="noopener noreferrer">View Live →</a>`;
+                }
+                if (p.code) {
+                    actionsHtml +=
+                        `<a class="project-code" href="${p.code}" target="_blank" rel="noopener noreferrer">View Code →</a>`;
+                }
+
+                let noteHtml = '';
+                if (p.note) {
+                    noteHtml = `<div class="project-note">${p.note}</div>`;
+                }
+
+                const techHtml = p.tech.map(t =>
+                    `<span class="tech">${getTechIcon(t)} ${t}</span>`
+                ).join('');
+
+                card.innerHTML = `
+                        <div class="project-number">PROJECT ${p.number}</div>
+                        <div class="project-title">${p.title}</div>
+                        <div class="project-description">${p.short}</div>
+                        <div class="tech-list">${techHtml}</div>
+                        <div class="project-actions">
+                            <div class="action-group">${actionsHtml}</div>
+                        </div>
+                        ${noteHtml}
+                    `;
+                container.appendChild(card);
+            });
+        }
+
+       
+        function openModal(section) {
+            const layer = document.getElementById('modal-layer');
+            const contents = document.querySelectorAll('.modal-content');
+            contents.forEach(function(content) {
+                content.style.display = 'none';
+            });
+            const selected = document.getElementById('modal-' + section);
+            if (!selected) return;
+            selected.style.display = 'block';
+            layer.classList.add('active');
+            closeContact();
+            if (section === 'projects') {
+                renderProjects();
+            }
+        }
+
+        function closeModal() {
+            const layer = document.getElementById('modal-layer');
+            if (layer) layer.classList.remove('active');
+        }
+
+        document.getElementById('modal-layer').addEventListener('click', function(event) {
+            if (event.target === this) closeModal();
+        });
+
+       
+        function toggleContact(event) {
+            event.stopPropagation();
+            const popover = document.getElementById('contact-popover');
+            popover.classList.toggle('active');
+        }
+
+        function closeContact() {
+            const popover = document.getElementById('contact-popover');
+            popover.classList.remove('active');
+        }
+
+        document.getElementById('contact-popover').addEventListener('click', function(event) {
+            event.stopPropagation();
+        });
+        document.addEventListener('click', function() {
+            closeContact();
+        });
+
+    
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+                closeContact();
+            }
+        });
+
+       
+        function setTheme(theme) {
+            const label = document.getElementById('theme-label');
+            if (theme === 'night') {
+                document.body.classList.add('night');
+                if (label) label.textContent = 'Night';
+            } else {
+                document.body.classList.remove('night');
+                if (label) label.textContent = 'Day';
+            }
+            if (window._setTheme3D) window._setTheme3D(theme);
+        }
+        window._setTheme3D = function(theme) {};
+        setTheme('day');
+
+      
+        const music = document.getElementById('background-music');
+        const musicButton = document.getElementById('music-button');
+        const musicLabel = document.getElementById('music-label');
+
+        if (music) music.volume = 0.18;
+
+        function setMusicPlayingUI() {
+            if (musicButton) musicButton.textContent = '❚❚';
+            if (musicLabel) musicLabel.textContent = 'Playing';
+        }
+
+        function setMusicStoppedUI() {
+            if (musicButton) musicButton.textContent = '▶';
+            if (musicLabel) musicLabel.textContent = 'Music';
+        }
+
+        window.addEventListener('load', function() {
+            if (!music) return;
+            music.play()
+                .then(function() { setMusicPlayingUI(); })
+                .catch(function() {
+                    const startMusic = function() {
+                        music.play()
+                            .then(function() { setMusicPlayingUI(); })
+                            .catch(function() {});
+                    };
+                    document.addEventListener('click', startMusic, { once: true });
+                    document.addEventListener('keydown', startMusic, { once: true });
+                    document.addEventListener('touchstart', startMusic, { once: true });
+                });
+        });
+
+        function toggleMusic() {
+            if (!music) return;
+            if (music.paused) {
+                music.play()
+                    .then(function() { setMusicPlayingUI(); })
+                    .catch(function(error) { console.log(error); });
+            } else {
+                music.pause();
+                setMusicStoppedUI();
+            }
+        }
+
+        if (music) {
+            music.addEventListener('ended', function() {
+                setMusicStoppedUI();
+            });
+        }
+
+      
+        document.addEventListener('DOMContentLoaded', function() {
+            renderProjects();
+        });
+    </script>
+
+</body>
+
+</html>
